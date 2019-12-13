@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "飞机4a被攻击",
+    "texture": "c6cd6f00-3e1f-4c00-a74a-e6e19bf68334",
+    "atlas": "",
+    "rect": [
+      30,
+      18,
+      69,
+      94
+    ],
+    "offset": [
+      0.5,
+      -1
+    ],
+    "originalSize": [
+      128,
+      128
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

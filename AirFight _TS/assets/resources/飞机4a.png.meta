@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "7fbdbb69-80bf-41d5-96d8-2ca042fb9969",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "飞机4a": {
+      "ver": "1.0.3",
+      "uuid": "7edcd338-f40f-44e5-81b8-07c9d96ecdb7",
+      "rawTextureUuid": "7fbdbb69-80bf-41d5-96d8-2ca042fb9969",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": 2,
+      "trimX": 30,
+      "trimY": 18,
+      "width": 69,
+      "height": 88,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

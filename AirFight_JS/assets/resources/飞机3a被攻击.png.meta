@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "35be0cb0-93fc-4385-b321-e27cf891a45f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "飞机3a被攻击": {
+      "ver": "1.0.3",
+      "uuid": "5a366560-d440-4f55-9f89-9a8282ff1c78",
+      "rawTextureUuid": "35be0cb0-93fc-4385-b321-e27cf891a45f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -3,
+      "offsetY": -1,
+      "trimX": 37,
+      "trimY": 13,
+      "width": 165,
+      "height": 255,
+      "rawWidth": 245,
+      "rawHeight": 279,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "7078827a-176f-48c9-8356-f9f131460719",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "飞机2a爆炸4": {
+      "ver": "1.0.3",
+      "uuid": "7fa47125-e6e5-421e-8209-d01a5d35d3fe",
+      "rawTextureUuid": "7078827a-176f-48c9-8356-f9f131460719",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 2,
+      "offsetY": -4.5,
+      "trimX": 11,
+      "trimY": 17,
+      "width": 46,
+      "height": 39,
+      "rawWidth": 64,
+      "rawHeight": 64,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

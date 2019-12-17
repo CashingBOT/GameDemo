@@ -23,6 +23,8 @@ const GAME_BG_PNG_URL = {
     BG04: 'bg/game/background_04',
     BG05: 'bg/game/background_05'
 }
+let JELLY_ITEM_SPRITE_LIST = [];
+let JELLY_ITEM_SPRITE_FILTERED_LIST = [];
 
 class GlobalData {
     public getBoardCol() {
@@ -46,7 +48,7 @@ class GlobalData {
     }
 
     public getJellyItemPngUrl() {
-        return JELLY_ITEM_PNG_URL[`ITEM0${this._getRandomInt(1, 6)}`]; // Verify here to change jelly item
+        return JELLY_ITEM_PNG_URL; // Verify here to change jelly item
     }
 
     public getGameScenePrefabUrl() {
@@ -55,6 +57,30 @@ class GlobalData {
 
     public getGameBgPngUrl() {
         return GAME_BG_PNG_URL.BG01; // Verify here to change game background
+    }
+
+    public getJellyItemSprite() {
+        return JELLY_ITEM_SPRITE_LIST[this._getRandomInt(0, 6)]; // Those numers are index not url
+    }
+
+    public regainJellyItemSprite(parm?) {
+        if (parm) {
+            return JELLY_ITEM_SPRITE_FILTERED_LIST[this._getRandomInt(0, 4)]; // Those numers are index not url
+        } else {
+            return JELLY_ITEM_SPRITE_FILTERED_LIST[this._getRandomInt(0, 5)];
+        }
+    }
+
+    public getJellyItemSpriteList() {
+        return JELLY_ITEM_SPRITE_LIST;
+    }
+
+    public addJellyItemSpriteList(assets) {
+        JELLY_ITEM_SPRITE_LIST = assets;
+    }
+
+    public addJellyItemSpriteFilteredList(assets) {
+        JELLY_ITEM_SPRITE_FILTERED_LIST = assets;
     }
 
     private _getRandomInt(min, max) {

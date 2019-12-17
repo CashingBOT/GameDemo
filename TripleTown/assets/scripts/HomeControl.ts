@@ -15,9 +15,21 @@ export default class HomeControl extends cc.Component {
     onLoad() {
         this._initNode();
 
+        this._loadJellyItemSprite();
+
         this._setLogoEffects();
 
         this._setStartBtnEvent();
+    }
+
+    onDisable() {
+        this._startBtn.off('mouseenter', () => {
+            this._startBtn.runAction(cc.scaleTo(0.2, 1.2));
+        })
+
+        this._startBtn.off('mouseleave', () => {
+            this._startBtn.runAction(cc.scaleTo(0.2, 1));
+        })
     }
 
     private _initNode() {
@@ -25,13 +37,22 @@ export default class HomeControl extends cc.Component {
         this._startBtn = this.node.parent.getChildByName('startBtn');
     }
 
-    private _setLogoEffects() {
-        cc.tween(this._logo)
-            .repeatForever(cc.tween(this._logo)
-                .delay(5)
-                .to(1, { scale: 1.2 }, { easing: 'elasticOut' })
-                .to(1, { scale: 1 }))
-            .start();
+    private _loadJellyItemSprite() {
+        cc.loader.loadResArray([
+            GlobalData.getJellyItemPngUrl().ITEM01,
+            GlobalData.getJellyItemPngUrl().ITEM02,
+            GlobalData.getJellyItemPngUrl().ITEM03,
+            GlobalData.getJellyItemPngUrl().ITEM04,
+            GlobalData.getJellyItemPngUrl().ITEM05,
+            GlobalData.getJellyItemPngUrl().ITEM06,
+        ], cc.SpriteFrame, (err, assets) => {
+            if (err) {
+                cc.error(err);
+                return;
+            }
+
+            GlobalData.addJellyItemSpriteList(assets);
+        })
     }
 
     private _loadGameScene() {
@@ -57,6 +78,15 @@ export default class HomeControl extends cc.Component {
         })
     }
 
+    private _setLogoEffects() {
+        cc.tween(this._logo)
+            .repeatForever(cc.tween(this._logo)
+                .delay(5)
+                .to(1, { scale: 1.2 }, { easing: 'elasticOut' })
+                .to(1, { scale: 1 }, { easing: 'bounceOut' }))
+            .start();
+    }
+
     private _setEffects(scene: cc.Node) {
         // Temporary effects
         // Home page logo fly out
@@ -65,13 +95,15 @@ export default class HomeControl extends cc.Component {
         })))
 
         // Home page start button fly out
-        this._startBtn.runAction(cc.sequence(cc.moveTo(1, cc.v2(0, -1280)), cc.callFunc(() => {
+        let seqAction1 = cc.spawn(cc.moveTo(1, cc.v2(0, -1280)), cc.scaleTo(0.2, 1));
+        let seqAction2 = cc.callFunc(() => {
             this._startBtn.active = false;
-        })));
+        })
+        this._startBtn.runAction(cc.sequence(seqAction1, seqAction2));
 
         // Game scene fly in
         // newScene.y = 1280;
-        // newScene.runAction(cc.moveTo(1, cc.v2(0, 0)))
+        // newScene.runAction(cc.moveTo(1, cc.v2(0, 0)));
 
         // Gamme scene fade in
         scene.opacity = 0;
@@ -89,15 +121,17 @@ export default class HomeControl extends cc.Component {
 
         // Set start button effects
         this._startBtn.on('mouseenter', () => {
-            this._startBtn.runAction(cc.scaleTo(0.2, 1.2))
+            this._startBtn.runAction(cc.scaleTo(0.2, 1.2));
         })
 
         this._startBtn.on('mouseleave', () => {
-            this._startBtn.runAction(cc.scaleTo(0.2, 1))
+            this._startBtn.runAction(cc.scaleTo(0.2, 1));
         })
     }
 
-    private _startBtnCallback() {
+    private _startBtnCallback(event) {
+        event.target.getComponent(cc.Button).interactable = false;
+
         this._loadGameScene();
     }
 }

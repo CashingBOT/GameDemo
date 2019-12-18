@@ -8,7 +8,6 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class HomeControl extends cc.Component {
-
     private _logo: cc.Node;
     private _startBtn: cc.Node;
 

@@ -25,6 +25,7 @@ const GAME_BG_PNG_URL = {
 }
 let JELLY_ITEM_SPRITE_LIST = [];
 let JELLY_ITEM_SPRITE_FILTERED_LIST = [];
+let JELLY_ITEM_NODE_LIST = [];
 
 class GlobalData {
     public getBoardCol() {
@@ -63,7 +64,19 @@ class GlobalData {
         return JELLY_ITEM_SPRITE_LIST[this._getRandomInt(0, 6)]; // Those numers are index not url
     }
 
-    public regainJellyItemSprite(parm?) {
+    public addJellyItemSpriteList(assets) {
+        JELLY_ITEM_SPRITE_LIST = assets;
+    }
+
+    public getJellyItemSpriteList() {
+        return JELLY_ITEM_SPRITE_LIST;
+    }
+
+    public addJellyItemSpriteFilteredList(assets) {
+        JELLY_ITEM_SPRITE_FILTERED_LIST = assets;
+    }
+
+    public regainJellyItemSprite(parm?: string) {
         if (parm) {
             return JELLY_ITEM_SPRITE_FILTERED_LIST[this._getRandomInt(0, 4)]; // Those numers are index not url
         } else {
@@ -71,16 +84,12 @@ class GlobalData {
         }
     }
 
-    public getJellyItemSpriteList() {
-        return JELLY_ITEM_SPRITE_LIST;
+    public addJellyItemNodeLIst(list) {
+        JELLY_ITEM_NODE_LIST = list;
     }
 
-    public addJellyItemSpriteList(assets) {
-        JELLY_ITEM_SPRITE_LIST = assets;
-    }
-
-    public addJellyItemSpriteFilteredList(assets) {
-        JELLY_ITEM_SPRITE_FILTERED_LIST = assets;
+    public getJellyItemNodeLIst() {
+        return JELLY_ITEM_NODE_LIST;
     }
 
     private _getRandomInt(min, max) {

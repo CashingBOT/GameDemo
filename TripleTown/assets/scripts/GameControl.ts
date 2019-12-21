@@ -32,12 +32,7 @@ export default class GameControl extends cc.Component {
 
         let action4 = cc.delayTime(0.5);
 
-        let action5 = cc.callFunc(() => {
-            cc.director.getCollisionManager().enabled = true;
-            cc.director.getCollisionManager().enabledDebugDraw = true;
-        })
-
-        this.node.runAction(cc.sequence(action1, action2, action3, action4, action5));
+        this.node.runAction(cc.sequence(action1, action2, action3, action4));
     }
 
     private _initNode() {
@@ -61,7 +56,7 @@ export default class GameControl extends cc.Component {
     }
 
     private _initBoard(item: cc.Node, i: number) {
-        this._board.addChild(item, i, `jellyItem${i}`)
+        this._board.addChild(item, i, `jellyItem${i}`);
 
         item.width = GlobalData.getJellyItemSize();
         item.height = GlobalData.getJellyItemSize();
@@ -150,7 +145,7 @@ export default class GameControl extends cc.Component {
                     }
                 })
 
-                this._jellyItemsList[i - 1].getComponent(cc.Sprite).spriteFrame = GlobalData.regainJellyItemSprite('o');
+                this._jellyItemsList[i - 1].getComponent(cc.Sprite).spriteFrame = GlobalData.regainJellyItemSprite('-_-');
 
                 this._jellyItemsList[i - 1].width = GlobalData.getJellyItemSize();
                 this._jellyItemsList[i - 1].height = GlobalData.getJellyItemSize();
@@ -159,6 +154,7 @@ export default class GameControl extends cc.Component {
         }
 
         if (i == 79) {
+            GlobalData.addJellyItemNodeLIst(this._jellyItemsList);
             let spriteList = []
             for (let i = 16; i < 80; i++) {
                 if (this._jellyItemsList[i].getComponent(cc.Sprite).spriteFrame._name == this._jellyItemsList[i - 8].getComponent(cc.Sprite).spriteFrame._name

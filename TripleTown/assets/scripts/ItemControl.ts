@@ -71,7 +71,7 @@ export default class ItemControl extends cc.Component {
                 if (t.getDelta().x && this._isX) { // Only X axis available
                     this._isY = false;
 
-                    if (t.getDelta().x > 2 && !this._isDLocked && !this._rightLocked) {
+                    if (t.getDelta().x > 6 && !this._isDLocked && !this._rightLocked) {
                         this._isDLocked = true;
                         this._setPos(this._zIndex, this._rightItemPos, this._initPos);
                         this._setPos(this._zIndex - 1, this._initPos, this._rightItemPos);
@@ -80,7 +80,7 @@ export default class ItemControl extends cc.Component {
                         // this._type = 'right';
                     }
 
-                    if (t.getDelta().x < -2 && !this._isDLocked && !this._leftLocked) {
+                    if (t.getDelta().x < -6 && !this._isDLocked && !this._leftLocked) {
                         this._isDLocked = true;
                         this._setPos(this._zIndex, this._leftItemPos, this._initPos);
                         this._setPos(this._zIndex + 1, this._initPos, this._leftItemPos);
@@ -90,13 +90,13 @@ export default class ItemControl extends cc.Component {
                 if (t.getDelta().y && this._isY) { // Only Y axis available
                     this._isX = false;
 
-                    if (t.getDelta().y > 2 && !this._isDLocked && !this._upLocked) {
+                    if (t.getDelta().y > 3 && !this._isDLocked && !this._upLocked) {
                         this._isDLocked = true;
                         this._setPos(this._zIndex, this._upItemPos, this._initPos);
                         this._setPos(this._zIndex + 8, this._initPos, this._upItemPos);
                     }
 
-                    if (t.getDelta().y < -2 && !this._isDLocked && !this._belowLocked) {
+                    if (t.getDelta().y < -3 && !this._isDLocked && !this._belowLocked) {
                         this._isDLocked = true;
                         this._setPos(this._zIndex, this._belowItemPos, this._initPos);
                         this._setPos(this._zIndex - 8, this._initPos, this._belowItemPos);

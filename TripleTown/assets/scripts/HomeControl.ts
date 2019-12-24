@@ -10,6 +10,8 @@ const { ccclass, property } = cc._decorator;
 export default class HomeControl extends cc.Component {
     private _logo: cc.Node;
     private _startBtn: cc.Node;
+    private _logoPos: cc.Vec2;
+    private _startBtnPos: cc.Vec2;
 
     onLoad() {
         this._initNode();
@@ -19,6 +21,8 @@ export default class HomeControl extends cc.Component {
         this._setLogoEffects();
 
         this._setStartBtnEvent();
+
+        this._setEmisEvent();
     }
 
     onDisable() {
@@ -34,6 +38,8 @@ export default class HomeControl extends cc.Component {
     private _initNode() {
         this._logo = this.node.parent.getChildByName('logo');
         this._startBtn = this.node.parent.getChildByName('startBtn');
+        this._logoPos = this._logo.position;
+        this._startBtnPos = this._startBtn.position;
     }
 
     private _loadJellyItemSprite() {
@@ -89,12 +95,12 @@ export default class HomeControl extends cc.Component {
     private _setEffects(scene: cc.Node) {
         // Temporary effects
         // Home page logo fly out
-        this._logo.runAction(cc.sequence(cc.moveTo(1, cc.v2(0, 1280)), cc.callFunc(() => {
+        this._logo.runAction(cc.sequence(cc.moveTo(0.5, cc.v2(0, 1280)), cc.callFunc(() => {
             this._logo.active = false;
         })))
 
         // Home page start button fly out
-        let seqAction1 = cc.spawn(cc.moveTo(1, cc.v2(0, -1280)), cc.scaleTo(0.2, 1));
+        let seqAction1 = cc.spawn(cc.moveTo(0.5, cc.v2(0, -1280)), cc.scaleTo(0.2, 1));
         let seqAction2 = cc.callFunc(() => {
             this._startBtn.active = false;
         })
@@ -109,6 +115,17 @@ export default class HomeControl extends cc.Component {
         cc.tween(scene)
             .to(1, { opacity: 255 })
             .start();
+    }
+
+    private _setEmisEvent() {
+        cc.systemEvent.on('end', () => {
+            this._logo.active = true;
+            this._logo.runAction(cc.moveTo(0.5, this._logoPos).easing(cc.easeExponentialOut()));
+
+            this._startBtn.active = true;
+            this._startBtn.color = cc.color().fromHEX('#FFFFFF');
+            this._startBtn.runAction(cc.moveTo(0.5, this._startBtnPos).easing(cc.easeExponentialOut()));
+        })
     }
 
     private _setStartBtnEvent() {

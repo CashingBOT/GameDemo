@@ -16,6 +16,7 @@ const JELLY_ITEM_PNG_URL = {
     ITEM06: 'atlas/items/item06/item_06'
 }
 const GAME_SCENE_PREFAB_URL = 'prefabs/GameScene';
+const PAUSE_SCENE_PREFAB_URL = 'prefabs/PauseScene';
 const GAME_BG_PNG_URL = {
     BG01: 'bg/game/background_01',
     BG02: 'bg/game/background_02',
@@ -23,9 +24,11 @@ const GAME_BG_PNG_URL = {
     BG04: 'bg/game/background_04',
     BG05: 'bg/game/background_05'
 }
-let JELLY_ITEM_SPRITE_LIST = [];
-let JELLY_ITEM_SPRITE_FILTERED_LIST = [];
-let JELLY_ITEM_NODE_LIST = [];
+let jellyItemSpriteList = [];
+let jellyItemSpriteFliteredList = [];
+let jellyItemNodeList = [];
+let isGameOn: boolean;
+let isPause: boolean;
 
 class GlobalData {
     public getBoardCol() {
@@ -56,40 +59,62 @@ class GlobalData {
         return GAME_SCENE_PREFAB_URL;
     }
 
+    public getPauseScenePrefabUrl() {
+        return PAUSE_SCENE_PREFAB_URL;
+    }
+
     public getGameBgPngUrl() {
         return GAME_BG_PNG_URL.BG01; // Verify here to change game background
     }
 
     public getJellyItemSprite() {
-        return JELLY_ITEM_SPRITE_LIST[this._getRandomInt(0, 6)]; // Those numers are index not url
+        return jellyItemSpriteList[this._getRandomInt(0, 6)]; // Those numers are index not url
     }
 
     public addJellyItemSpriteList(assets) {
-        JELLY_ITEM_SPRITE_LIST = assets;
+        jellyItemSpriteList = assets;
     }
 
     public getJellyItemSpriteList() {
-        return JELLY_ITEM_SPRITE_LIST;
+        return jellyItemSpriteList;
     }
 
     public addJellyItemSpriteFilteredList(assets) {
-        JELLY_ITEM_SPRITE_FILTERED_LIST = assets;
+        jellyItemSpriteFliteredList = assets;
     }
 
     public regainJellyItemSprite(parm?: string) {
         if (parm) {
-            return JELLY_ITEM_SPRITE_FILTERED_LIST[this._getRandomInt(0, 4)]; // Those numers are index not url
+            return jellyItemSpriteFliteredList[this._getRandomInt(0, 4)]; // Those numers are index not url
         } else {
-            return JELLY_ITEM_SPRITE_FILTERED_LIST[this._getRandomInt(0, 5)];
+            return jellyItemSpriteFliteredList[this._getRandomInt(0, 5)];
         }
     }
 
     public addJellyItemNodeLIst(list) {
-        JELLY_ITEM_NODE_LIST = list;
+        jellyItemNodeList = list;
     }
 
     public getJellyItemNodeLIst() {
-        return JELLY_ITEM_NODE_LIST;
+        return jellyItemNodeList;
+    }
+
+    public isGameOn(boolean?: string) {
+        if (boolean) {
+            isGameOn = JSON.parse(boolean);
+            return isGameOn;
+        } else {
+            return isGameOn;
+        }
+    }
+
+    public isPause(boolean?: string) {
+        if (boolean) {
+            isPause = JSON.parse(boolean);
+            return isPause;
+        } else {
+            return isPause;
+        }
     }
 
     private _getRandomInt(min, max) {

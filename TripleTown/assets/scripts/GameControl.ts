@@ -10,12 +10,16 @@ const { ccclass, property } = cc._decorator;
 export default class GameControl extends cc.Component {
     private _pauseBtn: cc.Node;
     private _board: cc.Node;
+    private _pauseScene: cc.Node;
     private _jellyItemsList = [];
+    private _isLocked = false;
 
     onLoad() {
         cc.log('%c Game Start ', "color:green;background-color:rgba(167, 167, 167, 0.2)");
 
         this._initAllActions();
+
+        this._loadPauseScene();
     }
 
     private _initAllActions() {
@@ -64,6 +68,20 @@ export default class GameControl extends cc.Component {
         this._setItemEffects(item, i);
 
         this._setItemAlgo(i);
+    }
+
+    private _loadPauseScene() {
+        cc.loader.loadRes(GlobalData.getPauseScenePrefabUrl(), cc.Prefab, (err, prefab) => {
+            if (err) {
+                cc.error(err.message || err);
+                return;
+            }
+
+            let newScene = cc.instantiate(prefab);
+            this.node.parent.addChild(newScene, 1, 'pauseScene');
+            this._pauseScene = this.node.parent.getChildByName('pauseScene');
+            newScene.active = false;
+        })
     }
 
     private _loadJellyItem() {
@@ -184,7 +202,9 @@ export default class GameControl extends cc.Component {
 
         // Set pause button effects
         this._pauseBtn.on('mouseenter', () => {
-            this._pauseBtn.runAction(cc.scaleTo(0.1, 0.9));
+            if (!GlobalData.isPause()) {
+                this._pauseBtn.runAction(cc.scaleTo(0.1, 0.9));
+            }
         })
 
         this._pauseBtn.on('mouseleave', () => {
@@ -192,8 +212,14 @@ export default class GameControl extends cc.Component {
         })
     }
 
-    // TODO
     private _pauseBtnCallback() {
+        this._pauseScene.active = true;
+        GlobalData.isPause('true');
 
+        this._pauseScene.getChildByName('bg').scale = 0;
+
+        cc.tween(this._pauseScene.getChildByName('bg'))
+            .to(1, { scale: 1 }, { easing: 'bounceOut' })
+            .start();
     }
 }

@@ -33,6 +33,7 @@ export default class ItemControl extends cc.Component {
 
             this._initPos = GlobalData.getJellyItemNodeLIst()[this._zIndex].position;
 
+            //TODO change touch
             if (GlobalData.getJellyItemNodeLIst()[this._zIndex + 8]) {
                 this._upItemPos = GlobalData.getJellyItemNodeLIst()[this._zIndex + 8].position;
             }
@@ -75,9 +76,6 @@ export default class ItemControl extends cc.Component {
                         this._isDLocked = true;
                         this._setPos(this._zIndex, this._rightItemPos, this._initPos);
                         this._setPos(this._zIndex - 1, this._initPos, this._rightItemPos);
-                        // [GlobalData.getJellyItemNodeLIst()[this._zIndex], GlobalData.getJellyItemNodeLIst()[this._zIndex - 1]]
-                        //     = [GlobalData.getJellyItemNodeLIst()[this._zIndex - 1], GlobalData.getJellyItemNodeLIst()[this._zIndex]];
-                        // this._type = 'right';
                     }
 
                     if (t.getDelta().x < -6 && !this._isDLocked && !this._leftLocked) {

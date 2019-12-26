@@ -1,5 +1,3 @@
-import Data from './Data';
-
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -13,23 +11,27 @@ export default class GameCtrl extends cc.Component {
     @property(cc.Prefab)
     item: cc.Prefab = null;
 
+    private _itemList = [];
+
     private _startPos: cc.Vec2;
 
     onLoad() {
-        for (let i = 0; i < 4; i++) {
-            Data.list()[i] = [];
-            for (let j = 0; j < 4; j++) {
+        for (let y = 0; y < 4; y++) {
+            this._itemList[y] = [];
+            for (let x = 0; x < 4; x++) {
                 let newBlock = cc.instantiate(this.block);
                 this.board.addChild(newBlock);
-                newBlock.x = -i * (165 + 8) - 8;
-                newBlock.y = j * (165 + 8) + 8;
-                Data.list()[i][j] = 0;
+                newBlock.x = x * (165 + 8) + 8;
+                newBlock.y = y * (165 + 8) + 8;
+                this._itemList[y][x] = 0;
+                newBlock.getChildByName('vec').getComponent(cc.Label).string = `(${x}, ${y})`
             }
         }
 
         this._setRandom();
 
         this.board.on('touchstart', (t: cc.Touch) => {
+            console.log(this._itemList);
             this._startPos = t.getLocation();
         })
 
@@ -45,6 +47,20 @@ export default class GameCtrl extends cc.Component {
     private _setEvent(t) {
         if (Math.abs(this._startPos.x - t.getLocation().x) > Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.x - t.getLocation().x > 0) { // Left
             console.log('left');
+            for (let y = 0; y < 4; y++) {
+                for (let x = 3; x > 0; x--) {
+                    if (this._itemList[y][x - 1] == this._itemList[y][x] && this._itemList[y][x] != 0) {
+                        this._itemList[y][x - 1] += this._itemList[y][x];
+                        this._itemList[y][x] = 0;
+                        console.log('combine');
+                    }
+                    if (this._itemList[y][x - 1] == 0 && this._itemList[y][x] != 0) {
+                        this._itemList[y][x - 1] = this._itemList[y][x];
+                        this._itemList[y][x] = 0;
+                        console.log('move');
+                    }
+                }
+            }
         }
         if (Math.abs(this._startPos.x - t.getLocation().x) > Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.x - t.getLocation().x < 0) { // Right
             console.log('right');
@@ -68,15 +84,15 @@ export default class GameCtrl extends cc.Component {
             console.log('Again');
             this._setRandom();
         } else {
-            Data.list()[vecList[0]][vecList[1]] = 2;
-            Data.list()[vecList[2]][vecList[3]] = 2;
+            this._itemList[vecList[1]][vecList[0]] = 2;
+            this._itemList[vecList[3]][vecList[2]] = 2;
 
             for (let i = 0; i < 4; i += 2) {
                 let newItem = cc.instantiate(this.item);
                 this.board.addChild(newItem);
-                newItem.x = -vecList[i] * (165 + 8) - 8;
+                newItem.x = vecList[i] * (165 + 8) + 8;
                 newItem.y = vecList[i + 1] * (165 + 8) + 8;
-                newItem.getChildByName('num').getComponent(cc.Label).string = Data.list()[vecList[i]][vecList[i + 1]];
+                newItem.getChildByName('num').getComponent(cc.Label).string = this._itemList[vecList[i + 1]][vecList[i]];
             }
             console.log('OK');
         }

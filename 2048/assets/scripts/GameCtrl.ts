@@ -13,6 +13,8 @@ export default class GameCtrl extends cc.Component {
 
     private _itemList = [];
 
+    private _itemNodeList = [];
+
     private _startPos: cc.Vec2;
 
     onLoad() {
@@ -24,7 +26,7 @@ export default class GameCtrl extends cc.Component {
                 newBlock.x = x * (165 + 8) + 8;
                 newBlock.y = y * (165 + 8) + 8;
                 this._itemList[y][x] = 0;
-                newBlock.getChildByName('vec').getComponent(cc.Label).string = `(${x}, ${y})`
+                newBlock.getChildByName('vec').getComponent(cc.Label).string = `(${x}, ${y})`;
             }
         }
 
@@ -52,11 +54,28 @@ export default class GameCtrl extends cc.Component {
                     if (this._itemList[y][x - 1] == this._itemList[y][x] && this._itemList[y][x] != 0) {
                         this._itemList[y][x - 1] += this._itemList[y][x];
                         this._itemList[y][x] = 0;
+                        for (let i = 0, len = this._itemNodeList.length; i < len; i++) {
+                            if (x * (165 + 8) + 8 == this._itemNodeList[i].x && y * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].x = (x - 1) * (165 + 8) + 8;
+                                this._itemNodeList[i].y = y * (165 + 8) + 8;
+                                this._itemNodeList[i].destroy();
+                                this._itemNodeList.splice(i,1);
+                            }
+                            if ((x - 1) * (165 + 8) + 8 == this._itemNodeList[i].x && y * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].getChildByName('num').getComponent(cc.Label).string = this._itemList[y][x - 1];
+                            }
+                        }
                         console.log('combine');
                     }
                     if (this._itemList[y][x - 1] == 0 && this._itemList[y][x] != 0) {
                         this._itemList[y][x - 1] = this._itemList[y][x];
                         this._itemList[y][x] = 0;
+                        for (let i = 0, len = this._itemNodeList.length; i < len; i++) {
+                            if (x * (165 + 8) + 8 == this._itemNodeList[i].x && y * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].x = (x - 1) * (165 + 8) + 8;
+                                this._itemNodeList[i].y = y * (165 + 8) + 8;
+                            }
+                        }
                         console.log('move');
                     }
                 }
@@ -64,12 +83,106 @@ export default class GameCtrl extends cc.Component {
         }
         if (Math.abs(this._startPos.x - t.getLocation().x) > Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.x - t.getLocation().x < 0) { // Right
             console.log('right');
+            for (let y = 0; y < 4; y++) {
+                for (let x = 0; x < 3; x++) {
+                    if (this._itemList[y][x + 1] == this._itemList[y][x] && this._itemList[y][x] != 0) {
+                        this._itemList[y][x + 1] += this._itemList[y][x];
+                        this._itemList[y][x] = 0;
+                        for (let i = 0, len = this._itemNodeList.length; i < len; i++) {
+                            if (x * (165 + 8) + 8 == this._itemNodeList[i].x && y * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].x = (x + 1) * (165 + 8) + 8;
+                                this._itemNodeList[i].y = y * (165 + 8) + 8;
+                                this._itemNodeList[i].destroy();
+                                this._itemNodeList.splice(i,1);
+                            }
+                            if ((x + 1) * (165 + 8) + 8 == this._itemNodeList[i].x && y * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].getChildByName('num').getComponent(cc.Label).string = this._itemList[y][x + 1];
+                            }
+                        }
+                        console.log('combine');
+                    }
+                    if (this._itemList[y][x + 1] == 0 && this._itemList[y][x] != 0) {
+                        this._itemList[y][x + 1] = this._itemList[y][x];
+                        this._itemList[y][x] = 0;
+                        for (let i = 0, len = this._itemNodeList.length; i < len; i++) {
+                            if (x * (165 + 8) + 8 == this._itemNodeList[i].x && y * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].x = (x + 1) * (165 + 8) + 8;
+                                this._itemNodeList[i].y = y * (165 + 8) + 8;
+                            }
+                        }
+                        console.log('move');
+                    }
+                }
+            }
         }
         if (Math.abs(this._startPos.x - t.getLocation().x) < Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.y - t.getLocation().y > 0) { // Below
             console.log('below');
+            for (let x = 0; x < 4; x++) {
+                for (let y = 3; y > 0; y--) {
+                    if (this._itemList[y - 1][x] == this._itemList[y][x] && this._itemList[y][x] != 0) {
+                        this._itemList[y - 1][x] += this._itemList[y][x];
+                        this._itemList[y][x] = 0;
+                        for (let i = 0, len = this._itemNodeList.length; i < len; i++) {
+                            if (x * (165 + 8) + 8 == this._itemNodeList[i].x && y * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].x = x * (165 + 8) + 8;
+                                this._itemNodeList[i].y = (y - 1) * (165 + 8) + 8;
+                                this._itemNodeList[i].destroy();
+                                this._itemNodeList.splice(i,1);
+                            }
+                            if (x * (165 + 8) + 8 == this._itemNodeList[i].x && (y - 1) * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].getChildByName('num').getComponent(cc.Label).string = this._itemList[y - 1][x];
+                            }
+                        }
+                        console.log('combine');
+                    }
+                    if (this._itemList[y - 1][x] == 0 && this._itemList[y][x] != 0) {
+                        this._itemList[y - 1][x] = this._itemList[y][x];
+                        this._itemList[y][x] = 0;
+                        for (let i = 0, len = this._itemNodeList.length; i < len; i++) {
+                            if (x * (165 + 8) + 8 == this._itemNodeList[i].x && y * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].x = x * (165 + 8) + 8;
+                                this._itemNodeList[i].y = (y - 1) * (165 + 8) + 8;
+                            }
+                        }
+                        console.log('move');
+                    }
+                }
+            }
+
         }
         if (Math.abs(this._startPos.x - t.getLocation().x) < Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.y - t.getLocation().y < 0) { // Up
             console.log('up');
+            for (let x = 0; x < 4; x++) {
+                for (let y = 0; y < 3; y++) {
+                    if (this._itemList[y + 1][x] == this._itemList[y][x] && this._itemList[y][x] != 0) {
+                        this._itemList[y + 1][x] += this._itemList[y][x];
+                        this._itemList[y][x] = 0;
+                        for (let i = 0, len = this._itemNodeList.length; i < len; i++) {
+                            if (x * (165 + 8) + 8 == this._itemNodeList[i].x && y * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].x = x * (165 + 8) + 8;
+                                this._itemNodeList[i].y = (y + 1) * (165 + 8) + 8;
+                                this._itemNodeList[i].destroy();
+                                this._itemNodeList.splice(i,1);
+                            }
+                            if (x * (165 + 8) + 8 == this._itemNodeList[i].x && (y + 1) * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].getChildByName('num').getComponent(cc.Label).string = this._itemList[y + 1][x];
+                            }
+                        }
+                        console.log('combine');
+                    }
+                    if (this._itemList[y + 1][x] == 0 && this._itemList[y][x] != 0) {
+                        this._itemList[y + 1][x] = this._itemList[y][x];
+                        this._itemList[y][x] = 0;
+                        for (let i = 0, len = this._itemNodeList.length; i < len; i++) {
+                            if (x * (165 + 8) + 8 == this._itemNodeList[i].x && y * (165 + 8) + 8 == this._itemNodeList[i].y) {
+                                this._itemNodeList[i].x = x * (165 + 8) + 8;
+                                this._itemNodeList[i].y = (y + 1) * (165 + 8) + 8;
+                            }
+                        }
+                        console.log('move');
+                    }
+                }
+            }
         }
     }
 
@@ -93,6 +206,7 @@ export default class GameCtrl extends cc.Component {
                 newItem.x = vecList[i] * (165 + 8) + 8;
                 newItem.y = vecList[i + 1] * (165 + 8) + 8;
                 newItem.getChildByName('num').getComponent(cc.Label).string = this._itemList[vecList[i + 1]][vecList[i]];
+                this._itemNodeList.push(newItem);
             }
             console.log('OK');
         }

@@ -33,9 +33,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 230,
-      "g": 209,
-      "b": 167,
+      "r": 214,
+      "g": 214,
+      "b": 214,
       "a": 255
     },
     "_contentSize": {
@@ -104,7 +104,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 62.25,
+      "width": 0,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -155,8 +155,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "vec",
-    "_N$string": "vec",
+    "_string": "",
+    "_N$string": "",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,

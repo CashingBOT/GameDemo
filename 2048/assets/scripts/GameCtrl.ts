@@ -1,3 +1,8 @@
+/******************
+ * Global Data Storage
+ * Creator: Resol
+ * ************** */
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -20,19 +25,32 @@ export default class GameCtrl extends cc.Component {
 
     private _startPos: cc.Vec2;
 
-    private _isSpawn: boolean = false;
-
     private _score: cc.Label;
 
-    onLoad() {
-        this._score = this.node.parent.getChildByName('score').getChildByName('num').getComponent(cc.Label);
+    private _isSpawn: boolean = false;
 
+    onLoad() {
+        this._initNode();
+
+        this._initBoard();
+
+        this._setTouchEvent();
+
+        this._setRandom();
+        this._setRandom();
+    }
+
+    private _initNode() {
+        this._score = this.node.parent.getChildByName('score').getChildByName('num').getComponent(cc.Label);
+    }
+
+    private _initBoard() {
         for (let y = 0; y < 4; y++) {
             this._itemNumList[y] = [];
             this._itemNodeList[y] = [];
             for (let x = 0; x < 4; x++) {
                 let newBlock = cc.instantiate(this.block);
-                this.board.addChild(newBlock);
+                this.board.addChild(newBlock, -5);
                 newBlock.x = x * (165 + 8) + 8;
                 newBlock.y = y * (165 + 8) + 8;
                 this._itemNumList[y][x] = 0;
@@ -40,28 +58,26 @@ export default class GameCtrl extends cc.Component {
                 // newBlock.getChildByName('vec').getComponent(cc.Label).string = `(${x}, ${y})`;
             }
         }
+    }
 
-        this._setRandom();
-        this._setRandom();
-
+    private _setTouchEvent() {
         this.board.on('touchstart', (t: cc.Touch) => {
-            console.log(this._itemNumList);
-            console.log(this._itemNodeList);
+            // console.log(this._itemNumList);
+            // console.log(this._itemNodeList);
             this._startPos = t.getLocation();
         })
 
         this.board.on('touchend', (t: cc.Touch) => {
-            this._setEvent(t);
-        })
-
-        this.board.on('touchcancel', (t: cc.Touch) => {
-            this._setEvent(t);
+            this._setAlgo(t);
         })
     }
 
-    private _setEvent(t) {
+    /**
+     * Core algorithm
+     */
+    private _setAlgo(t) {
         if (Math.abs(this._startPos.x - t.getLocation().x) > Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.x - t.getLocation().x > 0) { // Left
-            console.log('left');
+            // console.log('left');
 
             for (let y = 0; y < 4; y++) {
                 for (let x = 0; x < 4; x++) {
@@ -69,8 +85,6 @@ export default class GameCtrl extends cc.Component {
                         if (this._itemNumList[y][i - 1] == this._itemNumList[y][i] && this._itemNumList[y][i] != 0) {
                             this._itemNumList[y][i - 1] += this._itemNumList[y][i];
                             this._itemNumList[y][i] = 0;
-
-                            this._setPos(this._itemNodeList[y][i], cc.v2((i - 1) * (165 + 8) + 8, y * (165 + 8) + 8));
 
                             this._setDestroy(this._itemNodeList[y][i], this._itemNodeList[y][i - 1].position);
 
@@ -83,7 +97,7 @@ export default class GameCtrl extends cc.Component {
                             this._setEffect(this._itemNodeList[y][i - 1], '_');
                             this._setScore(this._itemNumList[y][i - 1]);
 
-                            console.log('combine');
+                            // console.log('combine');
                         }
 
                         if (this._itemNumList[y][i - 1] == 0 && this._itemNumList[y][i] != 0) {
@@ -98,7 +112,7 @@ export default class GameCtrl extends cc.Component {
 
                             this._isSpawn = true;
 
-                            console.log('move');
+                            // console.log('move');
                         }
                     }
                 }
@@ -111,7 +125,7 @@ export default class GameCtrl extends cc.Component {
         }
 
         if (Math.abs(this._startPos.x - t.getLocation().x) > Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.x - t.getLocation().x < 0) { // Right
-            console.log('right');
+            // console.log('right');
 
             for (let y = 0; y < 4; y++) {
                 for (let x = 3; x > -1; x--) {
@@ -131,7 +145,7 @@ export default class GameCtrl extends cc.Component {
                             this._setEffect(this._itemNodeList[y][i + 1], '_');
                             this._setScore(this._itemNumList[y][i + 1]);
 
-                            console.log('combine');
+                            // console.log('combine');
                         }
 
                         if (this._itemNumList[y][i + 1] == 0 && this._itemNumList[y][i] != 0) {
@@ -147,7 +161,7 @@ export default class GameCtrl extends cc.Component {
 
                             this._isSpawn = true;
 
-                            console.log('move');
+                            // console.log('move');
                         }
                     }
                 }
@@ -160,7 +174,7 @@ export default class GameCtrl extends cc.Component {
         }
 
         if (Math.abs(this._startPos.x - t.getLocation().x) < Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.y - t.getLocation().y > 0) { // Below
-            console.log('below');
+            // console.log('below');
 
             for (let x = 0; x < 4; x++) {
                 for (let y = 0; y < 4; y++) {
@@ -180,7 +194,7 @@ export default class GameCtrl extends cc.Component {
                             this._setColor(this._itemNumList[i - 1][x], this._itemNodeList[i - 1][x]);
                             this._setScore(this._itemNumList[i - 1][x]);
 
-                            console.log('combine');
+                            // console.log('combine');
                         }
 
                         if (this._itemNumList[i - 1][x] == 0 && this._itemNumList[i][x] != 0) {
@@ -196,7 +210,7 @@ export default class GameCtrl extends cc.Component {
 
                             this._isSpawn = true;
 
-                            console.log('move');
+                            // console.log('move');
                         }
                     }
                 }
@@ -209,7 +223,7 @@ export default class GameCtrl extends cc.Component {
         }
 
         if (Math.abs(this._startPos.x - t.getLocation().x) < Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.y - t.getLocation().y < 0) { // Up
-            console.log('up');
+            // console.log('up');
 
             for (let x = 0; x < 4; x++) {
                 for (let y = 3; y > -1; y--) {
@@ -229,7 +243,7 @@ export default class GameCtrl extends cc.Component {
                             this._setEffect(this._itemNodeList[i + 1][x], '_');
                             this._setScore(this._itemNumList[i + 1][x]);
 
-                            console.log('combine');
+                            // console.log('combine');
                         }
 
                         if (this._itemNumList[i + 1][x] == 0 && this._itemNumList[i][x] != 0) {
@@ -245,7 +259,7 @@ export default class GameCtrl extends cc.Component {
 
                             this._isSpawn = true;
 
-                            console.log('move');
+                            // console.log('move');
                         }
                     }
                 }
@@ -260,8 +274,6 @@ export default class GameCtrl extends cc.Component {
 
     /**
      * Random spawn item on blank
-     * @private
-     * @memberof GameCtrl
      */
     private _setRandom() {
         let vecList = [];
@@ -271,7 +283,7 @@ export default class GameCtrl extends cc.Component {
         }
 
         if (this._itemNodeList[vecList[1]][vecList[0]] != 0) {
-            console.log('Spawn again');
+            // console.log('Spawn again');
             this._setRandom();
         } else {
             this._itemNumList[vecList[1]][vecList[0]] = Math.random() > 0.75 ? 4 : 2; // 概率
@@ -286,16 +298,12 @@ export default class GameCtrl extends cc.Component {
             this._setColor(this._itemNumList[vecList[1]][vecList[0]], this._itemNodeList[vecList[1]][vecList[0]]);
             this._setEffect(newItem);
 
-            console.log('Spawn OK');
+            // console.log('Spawn OK');
         }
     }
 
     /**
      * Set item background color
-     * @private
-     * @param {number} num
-     * @param {cc.Node} node
-     * @memberof GameCtrl
      */
     private _setColor(num: number, node: cc.Node) {
         switch (num) {
@@ -329,10 +337,6 @@ export default class GameCtrl extends cc.Component {
 
     /**
      * Set item spawn or combine effect
-     * @private
-     * @param {cc.Node} item
-     * @param {string} [str]
-     * @memberof GameCtrl
      */
     private _setEffect(item: cc.Node, str?: string) {
 
@@ -353,26 +357,20 @@ export default class GameCtrl extends cc.Component {
 
     private _setPos(node: cc.Node, pos: cc.Vec2) {
         cc.tween(node)
-            .to(0, { zIndex: 1000 })
             .to(0.2, { position: pos })
-            .to(0, { zIndex: 0 })
             .start();
     }
 
     private _setDestroy(node: cc.Node, pos: cc.Vec2) {
         cc.tween(node)
-            .to(0, { zIndex: -1000 })
+            .to(0, { zIndex: -1 })
             .to(0.2, { position: pos })
-            .to(0, { zIndex: 0 })
             .call(() => { node.destroy(); })
             .start();
     }
 
     /**
      *Calculate score
-     * @private
-     * @param {string} num
-     * @memberof GameCtrl
      */
     private _setScore(num: string) {
         this._score.string = String(parseInt(this._score.string) + parseInt(num));

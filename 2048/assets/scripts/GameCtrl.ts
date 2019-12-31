@@ -5,6 +5,9 @@ export default class GameCtrl extends cc.Component {
     @property(cc.Node)
     board: cc.Node = null;
 
+    @property(cc.Node)
+    restartBtn: cc.Node = null;
+
     @property(cc.Prefab)
     block: cc.Prefab = null;
 
@@ -67,8 +70,11 @@ export default class GameCtrl extends cc.Component {
                             this._itemNumList[y][i - 1] += this._itemNumList[y][i];
                             this._itemNumList[y][i] = 0;
 
+                            this._setPos(this._itemNodeList[y][i], cc.v2((i - 1) * (165 + 8) + 8, y * (165 + 8) + 8));
+
+                            this._setDestroy(this._itemNodeList[y][i], this._itemNodeList[y][i - 1].position);
+
                             this._itemNodeList[y][i - 1].getChildByName('num').getComponent(cc.Label).string = this._itemNumList[y][i - 1];
-                            this._itemNodeList[y][i].destroy();
                             this._itemNodeList[y][i] = 0;
 
                             this._isSpawn = true;
@@ -84,10 +90,11 @@ export default class GameCtrl extends cc.Component {
                             this._itemNumList[y][i - 1] = this._itemNumList[y][i];
                             this._itemNumList[y][i] = 0;
 
+                            this._setPos(this._itemNodeList[y][i], cc.v2((i - 1) * (165 + 8) + 8, y * (165 + 8) + 8));
                             this._itemNodeList[y][i - 1] = this._itemNodeList[y][i];
                             this._itemNodeList[y][i] = 0;
-                            this._itemNodeList[y][i - 1].x = (i - 1) * (165 + 8) + 8;
-                            this._itemNodeList[y][i - 1].y = y * (165 + 8) + 8;
+                            // this._itemNodeList[y][i - 1].x = (i - 1) * (165 + 8) + 8;
+                            // this._itemNodeList[y][i - 1].y = y * (165 + 8) + 8;
 
                             this._isSpawn = true;
 
@@ -113,8 +120,9 @@ export default class GameCtrl extends cc.Component {
                             this._itemNumList[y][i + 1] += this._itemNumList[y][i];
                             this._itemNumList[y][i] = 0;
 
+                            this._setDestroy(this._itemNodeList[y][i], this._itemNodeList[y][i + 1].position);
+
                             this._itemNodeList[y][i + 1].getChildByName('num').getComponent(cc.Label).string = this._itemNumList[y][i + 1];
-                            this._itemNodeList[y][i].destroy();
                             this._itemNodeList[y][i] = 0;
 
                             this._isSpawn = true;
@@ -130,10 +138,12 @@ export default class GameCtrl extends cc.Component {
                             this._itemNumList[y][i + 1] = this._itemNumList[y][i];
                             this._itemNumList[y][i] = 0;
 
+                            this._setPos(this._itemNodeList[y][i], cc.v2((i + 1) * (165 + 8) + 8, y * (165 + 8) + 8));
+
                             this._itemNodeList[y][i + 1] = this._itemNodeList[y][i];
                             this._itemNodeList[y][i] = 0;
-                            this._itemNodeList[y][i + 1].x = (i + 1) * (165 + 8) + 8;
-                            this._itemNodeList[y][i + 1].y = y * (165 + 8) + 8;
+                            // this._itemNodeList[y][i + 1].x = (i + 1) * (165 + 8) + 8;
+                            // this._itemNodeList[y][i + 1].y = y * (165 + 8) + 8;
 
                             this._isSpawn = true;
 
@@ -159,10 +169,9 @@ export default class GameCtrl extends cc.Component {
                             this._itemNumList[i - 1][x] += this._itemNumList[i][x];
                             this._itemNumList[i][x] = 0;
 
+                            this._setDestroy(this._itemNodeList[i][x], this._itemNodeList[i - 1][x].position);
+
                             this._itemNodeList[i - 1][x].getChildByName('num').getComponent(cc.Label).string = this._itemNumList[i - 1][x];
-
-
-                            this._itemNodeList[i][x].destroy();
                             this._itemNodeList[i][x] = 0;
 
                             this._isSpawn = true;
@@ -178,10 +187,12 @@ export default class GameCtrl extends cc.Component {
                             this._itemNumList[i - 1][x] = this._itemNumList[i][x];
                             this._itemNumList[i][x] = 0;
 
+                            this._setPos(this._itemNodeList[i][x], cc.v2(x * (165 + 8) + 8, (i - 1) * (165 + 8) + 8));
+
                             this._itemNodeList[i - 1][x] = this._itemNodeList[i][x];
                             this._itemNodeList[i][x] = 0;
-                            this._itemNodeList[i - 1][x].x = x * (165 + 8) + 8;
-                            this._itemNodeList[i - 1][x].y = (i - 1) * (165 + 8) + 8;
+                            // this._itemNodeList[i - 1][x].x = x * (165 + 8) + 8;
+                            // this._itemNodeList[i - 1][x].y = (i - 1) * (165 + 8) + 8;
 
                             this._isSpawn = true;
 
@@ -207,8 +218,9 @@ export default class GameCtrl extends cc.Component {
                             this._itemNumList[i + 1][x] += this._itemNumList[i][x];
                             this._itemNumList[i][x] = 0;
 
+                            this._setDestroy(this._itemNodeList[i][x], this._itemNodeList[i + 1][x].position);
+
                             this._itemNodeList[i + 1][x].getChildByName('num').getComponent(cc.Label).string = this._itemNumList[i + 1][x];
-                            this._itemNodeList[i][x].destroy();
                             this._itemNodeList[i][x] = 0;
 
                             this._isSpawn = true;
@@ -224,10 +236,12 @@ export default class GameCtrl extends cc.Component {
                             this._itemNumList[i + 1][x] = this._itemNumList[i][x];
                             this._itemNumList[i][x] = 0;
 
+                            this._setPos(this._itemNodeList[i][x], cc.v2(x * (165 + 8) + 8, (i + 1) * (165 + 8) + 8));
+
                             this._itemNodeList[i + 1][x] = this._itemNodeList[i][x];
                             this._itemNodeList[i][x] = 0;
-                            this._itemNodeList[i + 1][x].x = x * (165 + 8) + 8;
-                            this._itemNodeList[i + 1][x].y = (i + 1) * (165 + 8) + 8;
+                            // this._itemNodeList[i + 1][x].x = x * (165 + 8) + 8;
+                            // this._itemNodeList[i + 1][x].y = (i + 1) * (165 + 8) + 8;
 
                             this._isSpawn = true;
 
@@ -317,10 +331,10 @@ export default class GameCtrl extends cc.Component {
      * Set item spawn or combine effect
      * @private
      * @param {cc.Node} item
-     * @param {*} [str]
+     * @param {string} [str]
      * @memberof GameCtrl
      */
-    private _setEffect(item: cc.Node, str?) {
+    private _setEffect(item: cc.Node, str?: string) {
 
         if (str) {
             cc.tween(item)
@@ -337,13 +351,34 @@ export default class GameCtrl extends cc.Component {
         }
     }
 
+    private _setPos(node: cc.Node, pos: cc.Vec2) {
+        cc.tween(node)
+            .to(0, { zIndex: 1000 })
+            .to(0.2, { position: pos })
+            .to(0, { zIndex: 0 })
+            .start();
+    }
+
+    private _setDestroy(node: cc.Node, pos: cc.Vec2) {
+        cc.tween(node)
+            .to(0, { zIndex: -1000 })
+            .to(0.2, { position: pos })
+            .to(0, { zIndex: 0 })
+            .call(() => { node.destroy(); })
+            .start();
+    }
+
     /**
      *Calculate score
      * @private
-     * @param {*} num
+     * @param {string} num
      * @memberof GameCtrl
      */
-    private _setScore(num: number) {
+    private _setScore(num: string) {
         this._score.string = String(parseInt(this._score.string) + parseInt(num));
+    }
+
+    public restartBtnCallback() {
+        cc.game.restart();
     }
 }

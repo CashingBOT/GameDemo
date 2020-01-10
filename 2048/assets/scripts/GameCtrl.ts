@@ -27,6 +27,8 @@ export default class GameCtrl extends cc.Component {
 
     private _score: cc.Label;
 
+    private _hstScore: cc.Label;
+
     private _isSpawn: boolean = false;
 
     onLoad() {
@@ -42,6 +44,10 @@ export default class GameCtrl extends cc.Component {
 
     private _initNode() {
         this._score = this.node.parent.getChildByName('score').getChildByName('num').getComponent(cc.Label);
+
+        this._hstScore = this.node.parent.getChildByName('highestScore').getChildByName('num').getComponent(cc.Label);
+
+        this._hstScore.string = cc.sys.localStorage.getItem('score') || '0';
     }
 
     private _initBoard() {
@@ -65,11 +71,11 @@ export default class GameCtrl extends cc.Component {
             // console.log(this._itemNumList);
             // console.log(this._itemNodeList);
             this._startPos = t.getLocation();
-        })
+        });
 
         this.board.on('touchend', (t: cc.Touch) => {
             this._setAlgo(t);
-        })
+        });
     }
 
     /**
@@ -377,6 +383,12 @@ export default class GameCtrl extends cc.Component {
     }
 
     public restartBtnCallback() {
+        
+        if (parseInt(this._score.string) > parseInt(this._hstScore.string)) {
+            this._hstScore.string = this._score.string;
+            cc.sys.localStorage.setItem('score', this._hstScore.string);
+        }
+
         cc.game.restart();
     }
 }

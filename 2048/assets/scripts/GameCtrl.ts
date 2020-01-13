@@ -23,6 +23,8 @@ export default class GameCtrl extends cc.Component {
 
     private _itemNodeList = [];
 
+    private _itemLockList = [];
+
     private _startPos: cc.Vec2;
 
     private _score: cc.Label;
@@ -54,6 +56,7 @@ export default class GameCtrl extends cc.Component {
         for (let y = 0; y < 4; y++) {
             this._itemNumList[y] = [];
             this._itemNodeList[y] = [];
+            this._itemLockList[y] = [];
             for (let x = 0; x < 4; x++) {
                 let newBlock = cc.instantiate(this.block);
                 this.board.addChild(newBlock, -5);
@@ -61,6 +64,7 @@ export default class GameCtrl extends cc.Component {
                 newBlock.y = y * (165 + 8) + 8;
                 this._itemNumList[y][x] = 0;
                 this._itemNodeList[y][x] = 0;
+                this._itemLockList[y][x] = false;
                 // newBlock.getChildByName('vec').getComponent(cc.Label).string = `(${x}, ${y})`;
             }
         }
@@ -79,6 +83,8 @@ export default class GameCtrl extends cc.Component {
             if (cc.sys.platform === cc.sys.WECHAT_GAME) { // Judge wether WeChat environment or not
                 wx.vibrateShort(); // Add vibration
             }
+
+            this._resetLock();
         });
     }
 
@@ -92,8 +98,9 @@ export default class GameCtrl extends cc.Component {
             for (let y = 0; y < 4; y++) {
                 for (let x = 0; x < 4; x++) {
                     for (let i = x; i > 0; i--) {
-                        if (this._itemNumList[y][i - 1] == this._itemNumList[y][i] && this._itemNumList[y][i] != 0) {
+                        if (this._itemNumList[y][i - 1] == this._itemNumList[y][i] && this._itemNumList[y][i] != 0 && !this._itemLockList[y][i] && !this._itemLockList[y][i - 1]) {
                             this._itemNumList[y][i - 1] += this._itemNumList[y][i];
+                            this._itemLockList[y][i - 1] = true;
                             this._itemNumList[y][i] = 0;
 
                             this._setDestroy(this._itemNodeList[y][i], this._itemNodeList[y][i - 1].position);
@@ -140,8 +147,9 @@ export default class GameCtrl extends cc.Component {
             for (let y = 0; y < 4; y++) {
                 for (let x = 3; x > -1; x--) {
                     for (let i = x; i < 3; i++) {
-                        if (this._itemNumList[y][i + 1] == this._itemNumList[y][i] && this._itemNumList[y][i] != 0) {
+                        if (this._itemNumList[y][i + 1] == this._itemNumList[y][i] && this._itemNumList[y][i] != 0 && !this._itemLockList[y][i] && !this._itemLockList[y][i + 1]) {
                             this._itemNumList[y][i + 1] += this._itemNumList[y][i];
+                            this._itemLockList[y][i + 1] = true;
                             this._itemNumList[y][i] = 0;
 
                             this._setDestroy(this._itemNodeList[y][i], this._itemNodeList[y][i + 1].position);
@@ -189,8 +197,9 @@ export default class GameCtrl extends cc.Component {
             for (let x = 0; x < 4; x++) {
                 for (let y = 0; y < 4; y++) {
                     for (let i = y; i > 0; i--) {
-                        if (this._itemNumList[i - 1][x] == this._itemNumList[i][x] && this._itemNumList[i][x] != 0) {
+                        if (this._itemNumList[i - 1][x] == this._itemNumList[i][x] && this._itemNumList[i][x] != 0 && !this._itemLockList[i][x] && !this._itemLockList[i - 1][x]) {
                             this._itemNumList[i - 1][x] += this._itemNumList[i][x];
+                            this._itemLockList[i - 1][x] = true;
                             this._itemNumList[i][x] = 0;
 
                             this._setDestroy(this._itemNodeList[i][x], this._itemNodeList[i - 1][x].position);
@@ -238,8 +247,9 @@ export default class GameCtrl extends cc.Component {
             for (let x = 0; x < 4; x++) {
                 for (let y = 3; y > -1; y--) {
                     for (let i = y; i < 3; i++) {
-                        if (this._itemNumList[i + 1][x] == this._itemNumList[i][x] && this._itemNumList[i][x] != 0) {
+                        if (this._itemNumList[i + 1][x] == this._itemNumList[i][x] && this._itemNumList[i][x] != 0 && !this._itemLockList[i][x] && !this._itemLockList[i + 1][x]) {
                             this._itemNumList[i + 1][x] += this._itemNumList[i][x];
+                            this._itemLockList[i + 1][x] = true;
                             this._itemNumList[i][x] = 0;
 
                             this._setDestroy(this._itemNodeList[i][x], this._itemNodeList[i + 1][x].position);
@@ -278,6 +288,14 @@ export default class GameCtrl extends cc.Component {
             if (this._isSpawn) {
                 this._setRandom();
                 this._isSpawn = false;
+            }
+        }
+    }
+
+    private _resetLock() {
+        for (let x = 0; x < 4; x++) {
+            for (let y = 0; y < 4; y++) {
+                this._itemLockList[y][x] = false;
             }
         }
     }
@@ -341,7 +359,9 @@ export default class GameCtrl extends cc.Component {
             case 512:
                 node.color = cc.color().fromHEX('#AF0000');
                 break;
-
+            case 1024:
+                node.color = cc.color().fromHEX('#2F36E6');
+                break;
         }
     }
 

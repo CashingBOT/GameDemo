@@ -75,6 +75,10 @@ export default class GameCtrl extends cc.Component {
 
         this.board.on('touchend', (t: cc.Touch) => {
             this._setAlgo(t);
+
+            if (cc.sys.platform === cc.sys.WECHAT_GAME) { // 判断是否微信小游戏
+                wx.vibrateShort(); // 添加震动
+            }
         });
     }
 
@@ -383,7 +387,7 @@ export default class GameCtrl extends cc.Component {
     }
 
     public restartBtnCallback() {
-        
+
         if (parseInt(this._score.string) > parseInt(this._hstScore.string)) {
             this._hstScore.string = this._score.string;
             cc.sys.localStorage.setItem('score', this._hstScore.string);

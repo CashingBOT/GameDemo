@@ -76,8 +76,8 @@ export default class GameCtrl extends cc.Component {
         this.board.on('touchend', (t: cc.Touch) => {
             this._setAlgo(t);
 
-            if (cc.sys.platform === cc.sys.WECHAT_GAME) { // 判断是否微信小游戏
-                wx.vibrateShort(); // 添加震动
+            if (cc.sys.platform === cc.sys.WECHAT_GAME) { // Judge wether WeChat environment or not
+                wx.vibrateShort(); // Add vibration
             }
         });
     }

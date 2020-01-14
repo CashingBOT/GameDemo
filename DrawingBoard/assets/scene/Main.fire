@@ -174,7 +174,7 @@
       "array": [
         0,
         0,
-        549.9261314031186,
+        545.5960043841964,
         0,
         0,
         0,
@@ -422,7 +422,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        447,
+        445,
         -43.986999999999995,
         0,
         0,
@@ -626,7 +626,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "drawController",
+    "_name": "drawCtr",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -2636,7 +2636,7 @@
     "_target": null,
     "_alignFlags": 33,
     "_left": 0,
-    "_right": 8,
+    "_right": 10,
     "_top": 128.987,
     "_bottom": 0,
     "_verticalCenter": 0,

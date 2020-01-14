@@ -39,14 +39,18 @@ export default class DrawController extends cc.Component {
     greenBtn: cc.Node = null;
 
     start() {
-        this.node.on('touchmove', (t: cc.Touch) => {
+        this.node.on('touchstart', (t: cc.Touch) => {
             let worldPos = t.getLocation();
-            let deltaX = t.getDelta().x;
-            let deltaY = t.getDelta().y;
             let pos = this.node.convertToNodeSpaceAR(worldPos);
             this.draw.moveTo(pos.x, pos.y);
-            this.draw.lineTo(pos.x + deltaX, pos.y + deltaY);
+        });
+
+        this.node.on('touchmove', (t: cc.Touch) => {
+            let worldPos = t.getLocation();
+            let pos = this.node.convertToNodeSpaceAR(worldPos);
+            this.draw.lineTo(pos.x, pos.y);
             this.draw.stroke();
+            this.draw.moveTo(pos.x, pos.y);
         });
     }
 

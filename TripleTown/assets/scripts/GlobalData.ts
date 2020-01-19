@@ -25,7 +25,7 @@ const GAME_BG_PNG_URL = {
     BG05: 'bg/game/background_05'
 }
 let jellyItemSpriteList = [];
-let jellyItemSpriteFliteredList = [];
+let jellyItemSpriteFilteredList = [];
 let jellyItemNodeList = [];
 let isGameOn: boolean;
 let isPause: boolean;
@@ -68,7 +68,7 @@ class GlobalData {
     }
 
     public getJellyItemSprite() {
-        return jellyItemSpriteList[this._getRandomInt(0, 6)]; // Those numers are index not url
+        return jellyItemSpriteList[this._getRandomInt(0, 6)]; // Those numbers are index not url
     }
 
     public addJellyItemSpriteList(assets) {
@@ -80,14 +80,14 @@ class GlobalData {
     }
 
     public addJellyItemSpriteFilteredList(assets) {
-        jellyItemSpriteFliteredList = assets;
+        jellyItemSpriteFilteredList = assets;
     }
 
     public regainJellyItemSprite(parm?: string) {
         if (parm) {
-            return jellyItemSpriteFliteredList[this._getRandomInt(0, 4)]; // Those numers are index not url
+            return jellyItemSpriteFilteredList[this._getRandomInt(0, 4)]; // Those numbers are index not url
         } else {
-            return jellyItemSpriteFliteredList[this._getRandomInt(0, 5)];
+            return jellyItemSpriteFilteredList[this._getRandomInt(0, 5)];
         }
     }
 

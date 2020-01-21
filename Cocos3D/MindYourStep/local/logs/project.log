@@ -1,0 +1,66 @@
+2020-01-21 10:32:32-log: preferences@1.0.0 enable
+2020-01-21 10:32:35-log: Parse [C:/CocosCreator3D_1.0.1/resources/resources/3d/engine/index.ts] : walk 481  files.
+2020-01-21 10:32:35-log: Parse [C:/CocosCreator3D_1.0.1/resources/resources/3d/engine/index.ts]: 2791.822ms
+2020-01-21 10:32:36-log: QuickCompiler compileFinished: 73.583ms
+2020-01-21 10:32:36-log: QuickCompiler rebuild finished: 3026.089ms
+2020-01-21 10:32:36-log: engine@1.0.0 enable
+2020-01-21 10:32:36-log: asset-db@1.0.0 enable
+2020-01-21 10:32:36-log: console@1.0.0 enable
+2020-01-21 10:32:36-log: scene@1.0.0 enable
+2020-01-21 10:32:36-log: ui-kit@1.0.0 enable
+2020-01-21 10:32:36-log: assets@1.0.0 enable
+2020-01-21 10:32:36-log: inspector@1.0.0 enable
+2020-01-21 10:32:36-log: hierarchy@1.0.0 enable
+2020-01-21 10:32:36-log: packager@1.0.0 enable
+2020-01-21 10:32:36-log: project-setting@1.0.0 enable
+2020-01-21 10:32:36-log: preview@1.0.0 enable
+2020-01-21 10:32:36-log: builder@1.0.0 enable
+2020-01-21 10:32:36-log: animator@1.0.0 enable
+2020-01-21 10:32:37-log: about@1.0.0 enable
+2020-01-21 10:32:37-log: tester@1.0.0 enable
+2020-01-21 10:32:37-log: ipc@1.0.0 enable
+2020-01-21 10:32:37-log: profile@1.0.0 enable
+2020-01-21 10:32:40-warn: [Asset DB] Sender does not exist
+2020-01-21 11:16:00-warn: The panel(ui-kit.color-picker) does not exist and cannot send a message.
+  message: reset
+  params: 
+2020-01-21 11:22:16-log: 构建模板生成成功!(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\build-templates\web-mobile\index.ejs)
+2020-01-21 11:22:32-log: 构建模板生成成功!(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\build-templates\web-desktop\index.ejs)
+2020-01-21 11:22:37-log: 预览模板生成成功！(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\preview-template\index.ejs)
+2020-01-21 11:30:58-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\oneStep.anim) saved
+2020-01-21 11:31:00-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\oneStep.anim) saved
+2020-01-21 11:31:00-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\oneStep.anim) saved
+2020-01-21 11:41:52-warn: The panel(ui-kit.searcher) does not exist and cannot send a message.
+  message: reset
+  params: 
+2020-01-21 11:41:52-info: [Window] Download the Vue Devtools extension for a better development experience:
+https://github.com/vuejs/vue-devtools
+2020-01-21 11:41:56-error: [Window] [Vue warn]: Duplicate keys detected: 'ce4a0717-3e7c-4159-8063-3c505f650011'. This may cause an update error.
+
+found in
+
+---> <ToolBar>
+       <Root>
+2020-01-21 11:41:59-error: [Window] [Vue warn]: Duplicate keys detected: 'ce4a0717-3e7c-4159-8063-3c505f650011'. This may cause an update error.
+
+found in
+
+---> <ToolBar>
+       <Root>
+2020-01-21 11:42:40-error: [Window] [Vue warn]: Duplicate keys detected: 'ce4a0717-3e7c-4159-8063-3c505f650011'. This may cause an update error.
+
+found in
+
+---> <ToolBar>
+       <Root>
+2020-01-21 11:46:23-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Animations\twoStep.anim) saved
+2020-01-21 11:46:39-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Animations\twoStep.anim) saved
+2020-01-21 11:46:50-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Animations\twoStep.anim) saved
+2020-01-21 11:46:51-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Animations\twoStep.anim) saved
+2020-01-21 11:46:51-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Animations\twoStep.anim) saved
+2020-01-21 11:46:52-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Animations\twoStep.anim) saved
+2020-01-21 11:46:52-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Animations\twoStep.anim) saved
+2020-01-21 14:13:11-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Animations\twoStep.anim) saved
+2020-01-21 14:13:12-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Animations\twoStep.anim) saved
+2020-01-21 14:13:23-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Scenes\Main.scene) saved
+2020-01-21 14:17:17-info: asset(C:\Users\Resol\Documents\Projects\GameMyDemo\Cocos3D\MindYourStep\assets\Scenes\Main.scene) saved

@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "2386d523-ebad-4191-80c6-c51a2b0ed095",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/Scripts/PlayerCtr.ts",
+    "importAsPlugin": false
+  }
+}

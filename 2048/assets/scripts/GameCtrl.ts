@@ -314,7 +314,7 @@ export default class GameCtrl extends cc.Component {
             // console.log('Spawn again');
             this._setRandom();
         } else {
-            this._itemNumList[vecList[1]][vecList[0]] = Math.random() > 0.75 ? 4 : 2; // 概率
+            this._itemNumList[vecList[1]][vecList[0]] = Math.random() > 0.75 ? 4 : 2; // Probability
 
             let newItem = cc.instantiate(this.item);
             this.board.addChild(newItem);

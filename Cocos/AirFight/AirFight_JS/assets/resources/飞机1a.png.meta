@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "fb029989-d9de-4214-b19c-8f2328ea788f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "飞机1a": {
+      "ver": "1.0.3",
+      "uuid": "698b6803-1483-47ef-af6b-1fc257a22178",
+      "rawTextureUuid": "fb029989-d9de-4214-b19c-8f2328ea788f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": -0.5,
+      "trimX": 4,
+      "trimY": 8,
+      "width": 131,
+      "height": 163,
+      "rawWidth": 140,
+      "rawHeight": 178,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

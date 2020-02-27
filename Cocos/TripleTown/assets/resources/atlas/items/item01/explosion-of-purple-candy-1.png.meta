@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "df273dbf-8d30-4926-ba8b-2ca088098475",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "explosion-of-purple-candy-1": {
+      "ver": "1.0.4",
+      "uuid": "d13a2a95-3471-412d-9210-c5d55cea016a",
+      "rawTextureUuid": "df273dbf-8d30-4926-ba8b-2ca088098475",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 1.5,
+      "trimX": 3,
+      "trimY": 1,
+      "width": 156,
+      "height": 158,
+      "rawWidth": 163,
+      "rawHeight": 163,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

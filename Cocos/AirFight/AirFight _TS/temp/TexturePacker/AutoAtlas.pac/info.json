@@ -1,0 +1,15 @@
+{
+  "packedTextures": [
+    {
+      "path": "C:\\Users\\Resol\\Documents\\AirFight\\temp\\TexturePacker\\AutoAtlas.pac\\AutoAtlas-1.png",
+      "name": "AutoAtlas-1.png",
+      "size": "1024x1024"
+    },
+    {
+      "path": "C:\\Users\\Resol\\Documents\\AirFight\\temp\\TexturePacker\\AutoAtlas.pac\\AutoAtlas-2.png",
+      "name": "AutoAtlas-2.png",
+      "size": "283x596"
+    }
+  ],
+  "unpackedTextures": []
+}

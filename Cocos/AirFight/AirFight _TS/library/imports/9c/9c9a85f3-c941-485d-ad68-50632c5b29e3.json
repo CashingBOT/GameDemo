@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "飞机4a爆炸3",
+    "texture": "342f1e99-4f4a-4a54-9476-9782b992c860",
+    "atlas": "",
+    "rect": [
+      30,
+      17,
+      69,
+      99
+    ],
+    "offset": [
+      0.5,
+      -2.5
+    ],
+    "originalSize": [
+      128,
+      128
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

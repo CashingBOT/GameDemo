@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "飞机4a",
+    "texture": "7fbdbb69-80bf-41d5-96d8-2ca042fb9969",
+    "atlas": "",
+    "rect": [
+      30,
+      18,
+      69,
+      88
+    ],
+    "offset": [
+      0.5,
+      2
+    ],
+    "originalSize": [
+      128,
+      128
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

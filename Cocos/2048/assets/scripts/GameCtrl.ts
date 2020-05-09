@@ -370,31 +370,31 @@ export default class GameCtrl extends cc.Component {
      */
     private _setEffect(item: cc.Node, str?: string) {
 
-        if (str) {
-            cc.tween(item)
-                .to(0, { zIndex: 1000 })
-                .to(0.2, { scale: 1.2 })
-                .to(0.3, { scale: 1 }, { easing: 'bounceOut' })
-                .to(0, { zIndex: 0 })
-                .start();
-        } else {
-            item.scale = 0;
-            cc.tween(item)
-                .to(0.5, { scale: 1 }, { easing: 'sineOut' })
-                .start();
-        }
+        // if (str) {
+        //     cc.tween(item)
+        //         .to(0, { zIndex: 1000 })
+        //         .to(0.2, { scale: 1.2 })
+        //         .to(0.3, { scale: 1 }, { easing: 'bounceOut' })
+        //         .to(0, { zIndex: 0 })
+        //         .start();
+        // } else {
+        //     item.scale = 0;
+        //     cc.tween(item)
+        //         .to(0.5, { scale: 1 }, { easing: 'sineOut' })
+        //         .start();
+        // }
     }
 
     private _setPos(node: cc.Node, pos: cc.Vec2) {
         cc.tween(node)
-            .to(0.2, { position: pos })
+            .to(0.1, { position: pos })
             .start();
     }
 
     private _setDestroy(node: cc.Node, pos: cc.Vec2) {
         cc.tween(node)
             .to(0, { zIndex: -1 })
-            .to(0.2, { position: pos })
+            .to(0, { position: pos })
             .call(() => { node.destroy(); })
             .start();
     }

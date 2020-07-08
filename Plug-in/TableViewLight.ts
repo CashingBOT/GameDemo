@@ -47,6 +47,10 @@ export default class TableViewLight extends cc.Component {
             this.topY = this.node.parent.convertToWorldSpaceAR(this.node.position).y + this.node.height;
             this.bottomY = this.topY - this.node.height;
         }
+        if (this.node.anchorY === 0.5) {
+            this.topY = this.node.parent.convertToWorldSpaceAR(this.node.position).y + 1 / 2 * this.node.height;
+            this.bottomY = this.topY - this.node.height;
+        }
         if (this.node.anchorY === 1) {
             this.topY = this.node.parent.convertToWorldSpaceAR(this.node.position).y;
             this.bottomY = this.topY - this.node.height;
@@ -79,7 +83,7 @@ export default class TableViewLight extends cc.Component {
     /**
      * 设置透明度
      */
-    private setOpacity():void {
+    private setOpacity(): void {
         this.content.children.forEach(node => {
             let itemPosY = this.content.convertToWorldSpaceAR(node.position).y;
 

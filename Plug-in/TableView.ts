@@ -1,467 +1,322 @@
 const { ccclass, property, menu, disallowMultiple } = cc._decorator;
-/**
- * 界面脚本接口
- */
-interface ViewLogic extends Core.ViewLogic {
-    /**
-     * 初始化item，暴露给TableView组件
-     * @see 注意，模板item的active要设为false
-     * @param data 和传给TableView.getData的数据结构相等
-     * @param index 子节点索引
-     * @param counter data数据索引
-     * @example content.children[index].getChildByName("label").getComponent(cc.Label).string = data[counter] + "";
-     */
-    initItem?(data: any, index: number, counter: number): void;
-}
-/**
- * 垂直排列选项枚举
- */
-enum VerticalDirection {
-    TOP_TO_BOTTOM,
-    BOTTOM_TO_TOP
-}
-/**
- * 初始化item所需要的数据
- */
-let data: Array<any> = [];
-/**
- * 滚动视图
- * @see 内置Layout，可在属性检查器设置
- * @see Loop无限循环滚动，可在属性检查器开启
- * @see 把模板item的active设置为false(属性检查器左上角取消打勾)
- * @extends {cc.ScrollView}
- * @method getData 获得item数据，用于初始化item
- * @method updateData 获得item数据，用于更新itemList
- */
-@ccclass
-@menu("i18n:MAIN_MENU.component.ui/TableView")
+
+@ccclass()
+@menu("i18n:MAIN_MENU.component.ui/TableViewFixed")
 @disallowMultiple
-export default class TableView extends cc.ScrollView {
+export default class TableViewFixed<T> extends cc.Component {
+    /******************** Class scope value ********************/
 
     /**
-     * 界面脚本所在节点
+     * 方向
      */
-    @property({
-        type: cc.Node,
-        tooltip: CC_DEV && "界面脚本所在节点"
-    })
-    scriptNode: cc.Node = null;
+    public static Direction = cc.Enum({
+        Horizontal: 0,
+        Vertical: 1,
+    });
     /**
-     * 开启无限滚动
+     * item模板
      */
-    @property({
-        tooltip: CC_DEV && "开启无限滚动"
-    })
-    loop: boolean = false;
+    @property(cc.Node)
+    itemTemplate: cc.Node = null;
     /**
-     * 上间距
+     * 页边距
      */
-    @property({
-        type: cc.Integer,
-        tooltip: CC_DEV && "上间距"
-    })
-    private top: number = 0;
+    @property(cc.Float)
+    edgeMargin: number = 0;
     /**
-     * 下间距
+     * item的间隔
      */
-    @property({
-        type: cc.Integer,
-        tooltip: CC_DEV && "下间距"
-    })
-    private bottom: number = 0;
+    @property(cc.Float)
+    itemMargin: number = 0;
     /**
-     * 相邻间距
+     * item点击事件回调
      */
-    @property({
-        type: cc.Integer,
-        tooltip: CC_DEV && "相邻间距"
-    })
-    private spacingY: number = 0;
-    @property({
-        type: cc.Enum(VerticalDirection),
-        tooltip: CC_DEV && "垂直排列子节点的方向"
-    })
-    verticalDirection: VerticalDirection = VerticalDirection.TOP_TO_BOTTOM;
+    @property([cc.Component.EventHandler])
+    itemClickEvents: cc.Component.EventHandler[] = [];
     /**
-     * item高度
+     * item设置数据事件回调
      */
-    private itemHeight: number = null;
+    @property(cc.Component.EventHandler)
+    itemSetDataEvent: cc.Component.EventHandler = null;
     /**
-     * 可视上边界
+     * 数据
      */
-    private topY: number = null;
+    private _data: T[] = [];
     /**
-     * 可视下边界
+     * 获取数据
      */
-    private bottomY: number = null;
-    /** 
-     * Y坐标偏移量
+    public get data(): T[] {
+        return this._data;
+    }
+    /**
+     * 只更新单个数据
      */
-    private posY: number = null;
-    /** 
-     * 是否锁定滚动
+    private refreshOneItem = false;
+    /**
+     * item列表
      */
-    private isScrollLock: boolean = false;
-    /** 
-     * 增量(前一时间的偏移量和当前时间的偏移量差)
+    protected _itemList: cc.Node[] = [];
+    /**
+     * item索引和item的映射字典
      */
-    private delta: number = 0;
-    /** 
-     * 节点列表，操作该列表实现重用
+    private itemIdxMap: Map<cc.Node, number> = new Map();
+    /**
+     * scrollView组件
      */
-    private itemList: Array<cc.Node> = [];
-    /** 
-     * cell对象池
+    protected _scrollView: cc.ScrollView = null;
+    /**
+     * item容器
      */
-    private cellPool: cc.NodePool = new cc.NodePool;
-    /** 
-     * 上滚列表
+    protected _container: cc.Node = null;
+    /**
+     * 可视范围
      */
-    private scrollToTopList: Array<cc.Node> = [];
-    /** 
-     * 下滚列表
+    protected _viewRect: cc.Size = null;
+    /**
+     * item大小
      */
-    private scrollToBottomList: Array<cc.Node> = [];
-    /** 
-     * content初始高度
+    protected _itemSize: cc.Size = null;
+    /**
+     * 布局开关
      */
-    private initialContentHeight: number = null;
-    /** 
-     * 界面脚本
-     * @function initItem 初始化item
+    protected _needDoLayout = false;
+    /**
+     * 方向
      */
-    private viewScript: ViewLogic = null;
-    /** 
-     * 数据计数
-     */
-    private dataCounter: number = 0;
-    /** 
-     * 首次赋值后的初始数据计数
-     */
-    private initialDataCounter: number = 0;
+    private _direction = TableViewFixed.Direction.Vertical;
 
-    /**
-     * 生命周期
-     */
+    /******************** Live callbacks ********************/
+
     protected onLoad(): void {
-        window.requestAnimationFrame(() => { // 下一帧调用，避免widget未加载
-
-            this.initNodePool();
-
-            this.setScrollHandler();
-
-            this.setLayout();
-
-            this.initBorder();
-
-            this.setOpacity();
-        });
-    }
-
-    /** 
-     * 初始化对象池
-     */
-    private initNodePool(): void {
-
-        this.viewScript = this.scriptNode.getComponent(this.scriptNode.name.replace("Portrait", "").replace("View", "Logic"));
-
-        // 计算可视范围内的cell个数，生成放入对象池，多生成一个用于重用
-        for (let i = 0; i < Math.ceil(this.node.height / this.content.children[0].height) + 1; i++) {
-            let newItem = cc.instantiate(this.content.children[0]);
-            newItem.zIndex = i + 1;
-            this.cellPool.put(newItem);
-        }
-
-        for (let i = 0; i < data.length; i++) {
-            let cell = null;
-            if (this.cellPool.size() > 0) {
-                cell = this.cellPool.get(); // 后进先出
-            } else {
-                if (this.loop) { // 若开启无限滚动，生成所有item
-                    cell = cc.instantiate(this.content.children[0]);
-                    cell.zIndex = i + 1;
-                } else {
-                    break;
-                }
-            }
-            this.content.addChild(cell); // 注意children下标越大，zIndex越小
-            if (this.viewScript.initItem) this.viewScript.initItem(data, i + 1, this.dataCounter);
-            cell.active = true;
-            this.itemList.push(cell);
-            this.dataCounter++;
-        }
-
-        this.initialDataCounter = this.dataCounter;
-
-        if (this.verticalDirection === VerticalDirection.TOP_TO_BOTTOM) {
-            this.scrollToBottomList = this.itemList;
+        // init field
+        this._scrollView = this.getComponent(cc.ScrollView);
+        this._container = this._scrollView.content;
+        this._viewRect = this.node.getContentSize();
+        this._itemSize = this.itemTemplate.getContentSize();
+        // create new event handler
+        const scrollEventHandler = new cc.Component.EventHandler();
+        scrollEventHandler.target = this.node;
+        scrollEventHandler.component = "TableViewFixed";
+        scrollEventHandler.handler = "onScroll";
+        this._scrollView.scrollEvents.push(scrollEventHandler);
+        // dir
+        if (this._scrollView.horizontal === true && this._scrollView.vertical === false) {
+            this._direction = TableViewFixed.Direction.Horizontal;
+        } else if (this._scrollView.horizontal === false && this._scrollView.vertical === true) {
+            this._direction = TableViewFixed.Direction.Vertical;
         } else {
-            this.scrollToTopList = this.itemList;
+            cc.error("List View 必须唯一滚动方向!");
         }
     }
 
-    /**
-     * 设置布局
-     */
-    private setLayout(): void { // 该方法只与Layout有关
-        let len = this.itemList.length;
-        this.itemHeight = this.content.children[0].height;
-        this.content.height = len * this.itemHeight + (len - 1) * this.spacingY + this.top + this.bottom;
-        this.initialContentHeight = this.content.height;
+    protected update(dt: number): void {
+        if (this._needDoLayout) {
+            this.doLayout();
+        }
+    }
 
-        if (this.verticalDirection === VerticalDirection.TOP_TO_BOTTOM) {
-            this.itemList.forEach((item, index) => {
-                item.y -= this.top;
-                item.y -= index * (this.itemHeight + this.spacingY);
-            });
+    /******************** Logic ********************/
+
+    /**
+     * 计算item位置
+     * @param itemIdx item索引
+     * @returns item的坐标
+     */
+    protected calcItemPos(itemIdx: number): cc.Vec2 {
+        if (this._direction === TableViewFixed.Direction.Horizontal) {
+            const posX =
+                this.edgeMargin + this._itemSize.width / 2 + (this._itemSize.width + this.itemMargin) * itemIdx;
+            const posY = 0;
+            return cc.v2(posX, posY);
         } else {
-            this.itemList.forEach((item, index) => {
-                item.y += this.bottom;
-                item.y += index * (this.itemHeight + this.spacingY);
-            });
+            const posX = 0;
+            const posY =
+                -this.edgeMargin - this._itemSize.height / 2 - (this._itemSize.height + this.itemMargin) * itemIdx;
+            return cc.v2(posX, posY);
         }
     }
 
     /**
-     * 初始化可视边界纵坐标
+     * 滚动事件回调
      */
-    private initBorder(): void { // 根据锚点确定可视范围边界
-        if (this.node.anchorY === 0) {
-            this.topY = this.node.parent.convertToWorldSpaceAR(this.node.position).y + this.node.height;
-            this.bottomY = this.topY - this.node.height;
-        }
-
-        if (this.node.anchorY === 1) {
-            this.topY = this.node.parent.convertToWorldSpaceAR(this.node.position).y;
-            this.bottomY = this.topY - this.node.height;
-        }
+    private onScroll(): void {
+        this.checkItemShow();
     }
 
     /**
-     * 注册ScrollView回调
+     * 检查item显示
      */
-    private setScrollHandler(): void {
-        let scrollViewEventHandler = new cc.Component.EventHandler();
-        scrollViewEventHandler.target = this.node;
-        scrollViewEventHandler.component = "TableView";
-        scrollViewEventHandler.handler = "scrollViewCallback";
-        scrollViewEventHandler.customEventData = "TableView";
-
-        let scrollView = this.node.getComponent(cc.ScrollView);
-        scrollView.scrollEvents.push(scrollViewEventHandler);
-        this.content = scrollView.content;
-    }
-
-    /**
-     * 滚动回调
-     */
-    private scrollViewCallback(scrollView: cc.ScrollView): void {
-        this.setOpacity();
-
-        // 当前滚动视图偏移量，往下滚动该值增大
-        let curPosY = scrollView.getScrollOffset().y;
-
-        // 获取增量delta
-        if (this.posY !== null && this.posY !== curPosY && this.isScrollLock) {
-            this.delta = this.posY - curPosY;
-            this.isScrollLock = false;
+    protected checkItemShow(): void {
+        // check exist item
+        let items: { [key: number]: cc.Node } = {};
+        for (let i = 0; i < this._itemList.length; i++) {
+            const item = this._itemList[i];
+            let itemIndex = this.itemIdxMap.get(item);
+            item.active = this.needShow(itemIndex);
+            items[itemIndex] = item;
         }
-        if (this.posY !== curPosY && !this.isScrollLock) {
-            this.posY = curPosY;
-            this.isScrollLock = true;
-        }
-
-        // 增量为负，向下滚动
-        if (this.delta < 0) {
-            this.setScrollDownPos();
-        }
-
-        // 增量为正，向上滚动
-        if (this.delta > 0) {
-            this.setScrollUpPos();
-        }
-    }
-
-    /** 
-     * 设置向下滚动位置
-     */
-    private setScrollDownPos(): void {
-        if (this.scrollToBottomList.length !== 0) {
-            this.scrollToBottomList.forEach(node => {
-                let itemPosY = this.content.convertToWorldSpaceAR(node.position).y;
-                if (this.loop) {
-                    if (this.verticalDirection === VerticalDirection.TOP_TO_BOTTOM) {
-                        // 开启无限滚动，子节点由上到下排列的情况
-                        // item完全超出上边界后移动到到最下面，没有停止条件
-                        if (itemPosY - 1 / 2 * this.itemHeight > this.topY) {
-                            node.y -= this.itemList.length * (this.itemHeight + this.spacingY);
-                            // 越往下滚content高度越大
-                            this.content.height += this.itemHeight + this.spacingY;
-                            this.scrollToTopList.push(node);
-                        }
-                    } else {
-                        // 开启无限滚动，子节点由下到上排列的情况
-                        // item完全超出上边界并且content未恢复初始高度时，移动到到最下面
-                        if (itemPosY - 1 / 2 * this.itemHeight > this.topY && this.content.height > this.initialContentHeight) {
-                            // 越往下滚content高度越小，直到恢复初始高度
-                            this.content.height -= this.itemHeight + this.spacingY;
-                            node.y -= this.itemList.length * (this.itemHeight + this.spacingY);
-                        }
-                    }
-                } else {
-                    if (this.verticalDirection === VerticalDirection.TOP_TO_BOTTOM) {
-                        // 未开启无限滚动，子节点由上到下排列的情况
-                        // item完全超出上边界并且数据没有展示完时，移动到到最下面
-                        if (itemPosY - 1 / 2 * this.itemHeight > this.topY && this.dataCounter < data.length) {
-                            node.y -= this.itemList.length * (this.itemHeight + this.spacingY);
-                            this.content.height += this.itemHeight + this.spacingY;
-                            // 给移动到最下面的item添加未展示的数据
-                            this.viewScript.initItem(data, node.zIndex, this.dataCounter);
-                            this.scrollToTopList.push(node);
-                            this.dataCounter++;
-                        }
-                    } else {
-                        // 未开启无限滚动，子节点由下到上排列的情况
-                        // 回滚还原先前数据
-                        if (itemPosY - 1 / 2 * this.itemHeight > this.topY && this.dataCounter > this.initialDataCounter) {
-                            node.y -= this.itemList.length * (this.itemHeight + this.spacingY);
-                            this.content.height -= this.itemHeight + this.spacingY;
-                            this.dataCounter--;
-                            // 给item添加上一次的数据
-                            this.viewScript.initItem(data, node.zIndex, this.dataCounter - this.itemList.length);
-                        }
-                    }
-                }
-            });
-
-            if (this.verticalDirection === VerticalDirection.BOTTOM_TO_TOP) {
-                // 子节点由下到上排列时，向下滚动的停止条件
-                if (this.content.height < this.initialContentHeight) {
-                    this.content.height = this.initialContentHeight;
-                    this.scrollToBottomList = [];
-                }
-            }
-        }
-    }
-
-    /** 
-     * 设置向上滚动位置
-     */
-    private setScrollUpPos(): void {
-        if (this.scrollToTopList.length !== 0) {
-            this.scrollToTopList.forEach(node => {
-                let itemPosY = this.content.convertToWorldSpaceAR(node.position).y;
-                if (this.loop) {
-                    if (this.verticalDirection === VerticalDirection.BOTTOM_TO_TOP) {
-                        // 开启无限滚动，子节点由上到下排列的情况
-                        // item完全超出下边界后移动到到最上面，没有停止条件
-                        if (itemPosY + 1 / 2 * this.itemHeight < this.bottomY) {
-                            this.content.height += this.itemHeight + this.spacingY;
-                            node.y += this.itemList.length * (this.itemHeight + this.spacingY);
-                            this.scrollToBottomList.push(node);
-                        }
-                    } else {
-                        // 开启无限滚动，子节点由下到上排列的情况
-                        // item完全超出下边界并且content未恢复初始高度时，移动到到最上面
-                        if (itemPosY + 1 / 2 * this.itemHeight < this.bottomY && this.content.height > this.initialContentHeight) {
-                            this.content.height -= this.itemHeight + this.spacingY;
-                            node.y += this.itemList.length * (this.itemHeight + this.spacingY);
-                        }
-                    }
-                } else {
-                    if (this.verticalDirection === VerticalDirection.BOTTOM_TO_TOP) {
-                        // 未开启无限滚动，子节点由上到下排列的情况
-                        // item完全超出下边界并且数据没有展示完时，移动到到最上面
-                        if (itemPosY + 1 / 2 * this.itemHeight < this.bottomY && this.dataCounter < data.length) {
-                            node.y += this.itemList.length * (this.itemHeight + this.spacingY);
-                            this.content.height += this.itemHeight + this.spacingY;
-                            // 给移动到最上面的item添加未展示的数据
-                            this.viewScript.initItem(data, node.zIndex, this.dataCounter);
-                            this.scrollToBottomList.push(node);
-                            this.dataCounter++;
-                        }
-                    } else {
-                        // 未开启无限滚动，子节点由下到上排列的情况
-                        // 回滚还原先前数据
-                        if (itemPosY + 1 / 2 * this.itemHeight < this.bottomY && this.dataCounter > this.initialDataCounter) {
-                            node.y += this.itemList.length * (this.itemHeight + this.spacingY);
-                            this.content.height -= this.itemHeight + this.spacingY;
-                            this.dataCounter--;
-                            // 给item添加上一次的数据
-                            this.viewScript.initItem(data, node.zIndex, this.dataCounter - this.itemList.length);
-                        }
-                    }
-                }
-            });
-
-            if (this.verticalDirection === VerticalDirection.TOP_TO_BOTTOM) {
-                // 子节点由上到下排列时，向上滚动的停止条件
-                if (this.content.height < this.initialContentHeight) {
-                    this.content.height = this.initialContentHeight;
-                    this.scrollToTopList = [];
+        for (let i = 0; i < this.data.length; i++) {
+            const show = this.needShow(i);
+            if (show) {
+                let item = items[i];
+                if (items[i] == null) {
+                    // data没有对应的viewItem时进行item的选定和初始化
+                    item = this.pickItem();
+                    item.active = true;
+                    this.itemIdxMap.set(item, i);
+                    this.setItemData(item, this.data[i], i);
+                    item.position = this.calcItemPos(i);
                 }
             }
         }
     }
 
     /**
-     * 设置透明度
+     * 选取item
+     * @returns 新item
      */
-    private setOpacity(): void {
-        this.itemList.forEach(node => {
-            let itemPosY = this.content.convertToWorldSpaceAR(node.position).y;
-
-            if (node.anchorY === 0) {
-                // 出界的item透明度设置为0
-                if (itemPosY > this.topY || itemPosY < this.bottomY) {
-                    node.opacity = 0;
-                }
-                else {
-                    node.opacity = 255;
-                }
+    private pickItem(): cc.Node {
+        for (let i = 0; i < this._itemList.length; i++) {
+            const item = this._itemList[i];
+            if (item.active === false) {
+                return item;
             }
+        }
+        return this.newItem();
+    }
 
-            if (node.anchorY === 0.5) {
-                // 出界的item透明度设置为0
-                if (itemPosY - 1 / 2 * this.itemHeight > this.topY || itemPosY + 1 / 2 * this.itemHeight < this.bottomY) {
-                    node.opacity = 0;
-                }
-                else {
-                    node.opacity = 255;
-                }
+    /**
+     * 创建新item并返回
+     */
+    private newItem(): cc.Node {
+        const node = cc.instantiate(this.itemTemplate);
+        this._itemList.push(node);
+        node.parent = this._container;
+        node.on(cc.Node.EventType.TOUCH_END, this.itemOnTouch, this);
+        return node;
+    }
+
+    /**
+     * item触摸事件回调
+     */
+    itemOnTouch(event: cc.Event.EventTouch): void {
+        const startPos = event.getStartLocation();
+        const endPos = event.getLocation();
+        const distance = startPos.sub(endPos).mag();
+        if (distance < 25) {
+            const item: cc.Node = event.target;
+            if (item.active) {
+                let itemIndex = this.itemIdxMap.get(item);
+                this.onItemClick(item, this.data[itemIndex], itemIndex);
             }
+        }
+    }
 
-            if (node.anchorY === 1) {
-                // 出界的item透明度设置为0
-                if (itemPosY - this.itemHeight > this.topY || itemPosY + this.itemHeight < this.bottomY) {
-                    node.opacity = 0;
-                }
-                else {
-                    node.opacity = 255;
-                }
+    /**
+     * 判断是否展示并返回结果
+     */
+    private needShow(itemIdx: number): boolean {
+        if (itemIdx >= this.data.length) {
+            return false;
+        }
+        if (this._direction === TableViewFixed.Direction.Horizontal) {
+            const containerX = this._container.x;
+            const itemX = this.calcItemPos(itemIdx).x;
+            const offset = itemX + containerX;
+            return (
+                offset > -(this._viewRect.width + this._itemSize.width) / 2 &&
+                offset < (this._viewRect.width + this._itemSize.width) / 2
+            );
+        } else {
+            const containerY = this._container.y;
+            const itemY = this.calcItemPos(itemIdx).y;
+            const offset = itemY + containerY;
+            return (
+                offset < (this._viewRect.height + this._itemSize.height) / 2 &&
+                offset > -(this._viewRect.height + this._itemSize.height) / 2
+            );
+        }
+    }
+
+    /**
+     * 执行布局
+     */
+    protected doLayout(): void {
+        const count = this.data.length;
+        for (let i = 0; i < this._itemList.length; i++) {
+            const item = this._itemList[i];
+            item.active = false;
+        }
+        if (this._direction === TableViewFixed.Direction.Horizontal) {
+            const width = this.edgeMargin * 2 + this._itemSize.width * count + this.itemMargin * (count - 1);
+            const height = this._viewRect.height;
+            this._container.setContentSize(cc.size(width, height));
+            this._scrollView.scrollToLeft(0);
+        } else {
+            const width = this._viewRect.width;
+            const height = this.edgeMargin * 2 + this._itemSize.height * count + this.itemMargin * (count - 1);
+            this._container.setContentSize(cc.size(width, height));
+            this._scrollView.scrollToTop(0);
+        }
+        this.checkItemShow();
+        this.refreshItems(); // TODO: 暂时
+        this._needDoLayout = false;
+    }
+
+    /**
+     * 初始化单个item
+     */
+    private setItemData(item: cc.Node, data: T, index: number): void {
+        this.itemSetDataEvent.emit([item, data, index]);
+    }
+
+    /**
+     * item点击事件，初始化单个item
+     */
+    private onItemClick(item: cc.Node, data: T, index: number): void {
+        for (let handler of this.itemClickEvents) {
+            handler.emit([item, data, index]);
+        }
+    }
+
+    /******************** External call ********************/
+
+    /**
+     * 设置可视范围
+     */
+    public set viewRect(v: any) {
+        this._viewRect = v;
+    }
+
+    /**
+     * 设置数据
+     */
+    public set data(ds: T[]) {
+        this._data = ds;
+        // 设置完数据，打开布局开关
+        if (this.refreshOneItem) {
+            this.refreshOneItem = false;
+            return;
+        }
+        this._needDoLayout = true;
+    }
+
+    /**
+     * 刷新item
+     */
+    public refreshItems(): void {
+        this._itemList.forEach((item: cc.Node) => {
+            let itemIndex = this.itemIdxMap.get(item);
+            if (this.data[itemIndex]) {
+                this.setItemData(item, this.data[itemIndex], itemIndex);
             }
         });
     }
 
     /**
-     * 获得item数据，用于初始化item，暴露给界面脚本
+     * 只刷新一次
      */
-    public getData<T>(itemData: Array<T>): void {
-        data = itemData || [];
-    }
-
-    /**
-     * 获得item数据，用于更新itemList，暴露给界面脚本
-     */
-    public updateData<T>(itemData: Array<T> | T): void {
-        // 类型保护
-        function isArray(arr: Array<T> | T): arr is Array<T> {
-            return true;
-        }
-        if (isArray(itemData)) {
-            data.push(...itemData);
-        } else {
-            data.push(itemData);
-        }
+    public refreshItemsOnce(): void {
+        this.refreshOneItem = true;
     }
 }

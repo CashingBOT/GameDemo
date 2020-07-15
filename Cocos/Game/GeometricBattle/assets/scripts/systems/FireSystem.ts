@@ -1,3 +1,5 @@
+import EventManager from "../managers/EventManager";
+
 const { ccclass } = cc._decorator;
 
 @ccclass
@@ -27,36 +29,25 @@ export default class FireSystem extends cc.Component {
 
         this.nodeScale = this.nodeScaleX * this.nodeScaleY;
 
-        this.setEvent();
+        this.onStart();
+    }
+
+    protected onDisable(): void {
+        switch (this.nodeName) {
+            case this.Shape.Triangle:
+                this.unschedule(this.triangleSkill);
+                this.node.scaleX = this.nodeScaleX;
+                this.node.scaleY = this.nodeScaleY;
+                break;
+        }
     }
 
     /******************** Logic ********************/
-
-    private setEvent(): void {
-        this.node.on(cc.Node.EventType.TOUCH_START, () => {
-            this.scheduleOnce(this.onStart, 0.1); // 滞后0.1s，防止点上去就变形
-        });
-
-        this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onCancel, this);
-
-        this.node.on(cc.Node.EventType.TOUCH_END, this.onCancel, this);
-    }
 
     private onStart(): void {
         switch (this.nodeName) {
             case this.Shape.Triangle:
                 this.schedule(this.triangleSkill, 0.1, 20);
-                break;
-        }
-    }
-
-    private onCancel(): void {
-        switch (this.nodeName) {
-            case this.Shape.Triangle:
-                this.unschedule(this.onStart);
-                this.unschedule(this.triangleSkill);
-                this.node.scaleX = this.nodeScaleX;
-                this.node.scaleY = this.nodeScaleY;
                 break;
         }
     }

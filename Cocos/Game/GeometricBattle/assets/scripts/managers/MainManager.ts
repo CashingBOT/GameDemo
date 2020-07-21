@@ -1,20 +1,53 @@
 import EventManager from "./EventManager";
 import TouchSystem from "../systems/TouchSystem";
+import RotateSystem from "../systems/RotateSystem";
 import FireSystem from "../systems/FireSystem";
+import DataManager from "./DataManager";
 
-const { ccclass } = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class MainController extends cc.Component {
-    @EventManager.systemEventOn(EventManager.TOUCH_ON)
-    public touchOn(node: cc.Node): void {
-        node.getComponent(TouchSystem).enabled = true;
-        node.getComponent(FireSystem).enabled = false;
+    /******************** Scope values ********************/
+
+    @property(cc.Node)
+    private touchLayer: cc.Node = null;
+
+    @property(cc.Node)
+    private player: cc.Node = null;
+
+    /******************** Live callbacks ********************/
+
+    protected start(): void {
+        this.initData();
+
+        this.addComp();
     }
 
-    @EventManager.systemEventOn(EventManager.TOUCH_OFF)
-    public fireOn(node: cc.Node): void {
-        node.getComponent(TouchSystem).enabled = false;
-        node.getComponent(FireSystem).enabled = true;
+    /******************** Logics ********************/
+
+    private initData(): void {
+        DataManager.touchLayer = this.touchLayer;
+        DataManager.player = this.player;
+    }
+
+    private addComp(): void {
+        DataManager.touchLayer.addComponent(TouchSystem).enabled = true;
+
+        // DataManager.player.addComponent(RotateSystem).enabled = true;
+
+        DataManager.player.addComponent(FireSystem).enabled = false;
+    }
+
+    @EventManager.systemEventOn(EventManager.MOVE_ON)
+    public touchOn(): void {
+        DataManager.touchLayer.getComponent(TouchSystem).enabled = true;
+        DataManager.player.getComponent(FireSystem).enabled = false;
+    }
+
+    @EventManager.systemEventOn(EventManager.MOVE_OFF)
+    public fireOn(): void {
+        DataManager.touchLayer.getComponent(TouchSystem).enabled = false;
+        DataManager.player.getComponent(FireSystem).enabled = true;
     }
 }

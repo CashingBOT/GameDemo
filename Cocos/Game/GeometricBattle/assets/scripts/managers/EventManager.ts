@@ -1,7 +1,9 @@
 export default class EventManager {
-    public static TOUCH_ON: symbol = Symbol();
+    /******************** Scope values ********************/
 
-    public static TOUCH_OFF: symbol = Symbol();
+    public static MOVE_ON: symbol = Symbol();
+
+    public static MOVE_OFF: symbol = Symbol();
 
     public static FIRE_ON: symbol = Symbol();
 
@@ -9,12 +11,14 @@ export default class EventManager {
 
     public static eventsMap: Map<symbol, any> = new Map();
 
-    public static emitSystemEvent(eventName: symbol, node: cc.Node): void {
+    /******************** External call ********************/
+
+    public static emitSystemEvent(eventName: symbol): void {
         const { callback, target } = this.eventsMap.get(eventName);
-        callback.call(target, node);
+        callback.call(target);
     }
 
-    public static systemEventOn(eventName: symbol) {
+    public static systemEventOn(eventName: symbol): any {
         return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
             if (EventManager.eventsMap.has(eventName)) {
                 console.warn(`${eventName.toString()} 事件已存在，覆盖`);

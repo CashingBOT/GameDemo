@@ -76,18 +76,21 @@
       },
       {
         "__id__": 7
+      },
+      {
+        "__id__": 10
       }
     ],
     "_active": true,
     "_components": [
       {
+        "__id__": 11
+      },
+      {
         "__id__": 12
       },
       {
         "__id__": 13
-      },
-      {
-        "__id__": 14
       }
     ],
     "_prefab": null,
@@ -177,7 +180,7 @@
       "array": [
         0,
         0,
-        548.1940805955497,
+        549.4389921134898,
         0,
         0,
         0,
@@ -343,14 +346,7 @@
       }
     ],
     "_active": true,
-    "_components": [
-      {
-        "__id__": 10
-      },
-      {
-        "__id__": 11
-      }
-    ],
+    "_components": [],
     "_prefab": null,
     "_opacity": 255,
     "_color": {
@@ -494,24 +490,62 @@
     "_id": "02PzWy4wtCorMOqxOr2XMH"
   },
   {
-    "__type__": "ae5576GapJI86n+JK1CF2Ur",
-    "_name": "",
+    "__type__": "cc.Node",
+    "_name": "touch_layer",
     "_objFlags": 0,
-    "node": {
-      "__id__": 7
+    "_parent": {
+      "__id__": 2
     },
-    "_enabled": true,
-    "_id": "0fSv9eRWlAsJNPhZT5d00B"
-  },
-  {
-    "__type__": "cccf3CqvURKFJVuLYRNVabW",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 7
+    "_children": [],
+    "_active": true,
+    "_components": [],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
     },
-    "_enabled": false,
-    "_id": "0fBzMHA7ZHt7o2aAZ8p8Qv"
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 1334,
+      "height": 750
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": "1d1VjXgKNDDpfK5DSo9eW2"
   },
   {
     "__type__": "cc.Canvas",
@@ -565,6 +599,12 @@
       "__id__": 2
     },
     "_enabled": true,
+    "touchLayer": {
+      "__id__": 10
+    },
+    "player": {
+      "__id__": 7
+    },
     "_id": "13S/oSU/hGZqTZrYLnnW09"
   }
 ]

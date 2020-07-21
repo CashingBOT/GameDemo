@@ -6,8 +6,8 @@ const { ccclass } = cc._decorator;
 export default class FireSystem extends cc.Component {
     /******************** Class scope value ********************/
 
-    private Shape = cc.Enum({
-        Triangle: "triangle",
+    private readonly SHAPE = cc.Enum({
+        TRIANGLE: "triangle",
     });
 
     private nodeName: string = null;
@@ -34,7 +34,7 @@ export default class FireSystem extends cc.Component {
 
     protected onDisable(): void {
         switch (this.nodeName) {
-            case this.Shape.Triangle:
+            case this.SHAPE.TRIANGLE:
                 this.unschedule(this.triangleSkill);
                 this.node.scaleX = this.nodeScaleX;
                 this.node.scaleY = this.nodeScaleY;
@@ -42,12 +42,12 @@ export default class FireSystem extends cc.Component {
         }
     }
 
-    /******************** Logic ********************/
+    /******************** Logics ********************/
 
     private onStart(): void {
         switch (this.nodeName) {
-            case this.Shape.Triangle:
-                this.schedule(this.triangleSkill, 0.1, 20);
+            case this.SHAPE.TRIANGLE:
+                this.schedule(this.triangleSkill, 0.1, 20); // 0.1 * 20 = 2，实际总共3s
                 break;
         }
     }

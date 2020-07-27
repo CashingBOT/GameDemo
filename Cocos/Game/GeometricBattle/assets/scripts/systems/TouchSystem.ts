@@ -1,5 +1,5 @@
-import EventManager from "../managers/EventManager";
 import DataManager from "../managers/DataManager";
+import EventManager from "../managers/EventManager";
 
 const { ccclass } = cc._decorator;
 
@@ -9,17 +9,21 @@ export default class TouchSystem extends cc.Component {
 
     private readonly SPEED: number = 1000;
 
-    private isMove: boolean = false;
+    private time: number = null;
 
     private distance: number = null;
-
-    private time: number = null;
 
     private deltaX: number = null;
 
     private deltaY: number = null;
 
     private touchPos: cc.Vec2 = null;
+
+    private isStart: boolean = false;
+
+    private isMove: boolean = false;
+
+    private isRotate: boolean = false;
 
     /******************** Live callbacks ********************/
 
@@ -32,9 +36,13 @@ export default class TouchSystem extends cc.Component {
 
         if (!this.node.hasEventListener(cc.Node.EventType.TOUCH_MOVE)) {
             this.node.on(cc.Node.EventType.TOUCH_MOVE, (event: cc.Touch) => {
-                this.unschedule(this.emitMsg);
-                this.isMove = true;
-                this.calcMove(event);
+                if (event.getDelta().x !== 0 && event.getDelta().y !== 0) {
+                    this.unschedule(this.emitMsg);
+                    this.calcParam(event);
+                    this.isStart = true;
+                    DataManager.moveLock === false ? (this.isMove = true) : (this.isMove = false);
+                    this.isRotate = true;
+                }
             });
         }
 
@@ -49,36 +57,23 @@ export default class TouchSystem extends cc.Component {
             this.node.on(cc.Node.EventType.TOUCH_END, () => {
                 EventManager.emitSystemEvent(EventManager.MOVE_ON);
                 this.unschedule(this.emitMsg);
+                this.isStart = false;
                 this.isMove = false;
+                this.isRotate = false;
             });
         }
     }
 
-    protected onDisable(): void {
-        this.node.off(cc.Node.EventType.TOUCH_MOVE);
-    }
+    protected update(dt: number): void {
+        if (!this.isStart) return;
 
-    protected update(dt): void {
-        if (this.isMove) {
-            let deltaX = DataManager.player.x - this.touchPos.x;
-            let deltaY = DataManager.player.y - this.touchPos.y;
-            let absX = Math.abs(deltaX);
-            let absY = Math.abs(deltaY);
-            let radian = Math.atan2(deltaY, deltaX);
-            let degree = cc.misc.radiansToDegrees(radian);
-            degree += 90;
-            DataManager.player.angle = degree;
-            let totalFrame = this.time / dt;
-            let frameX = this.deltaX / totalFrame;
-            let frameY = this.deltaY / totalFrame;
-            DataManager.player.x += frameX;
-            DataManager.player.y += frameY;
-            if (absX <= 10 && absY <= 10) {
-                DataManager.player.x = this.touchPos.x;
-                DataManager.player.y = this.touchPos.y;
-                this.isMove = false;
-            }
-        }
+        let deltaX = DataManager.player.x - this.touchPos.x;
+
+        let deltaY = DataManager.player.y - this.touchPos.y;
+
+        if (this.isMove) this.move(dt, deltaX, deltaY);
+
+        if (this.isRotate) this.rotate(deltaX, deltaY);
     }
 
     /******************** Logics ********************/
@@ -87,12 +82,34 @@ export default class TouchSystem extends cc.Component {
         EventManager.emitSystemEvent(EventManager.MOVE_OFF);
     }
 
-    private calcMove(event: cc.Touch): void {
+    private calcParam(event: cc.Touch): void {
         let playerWorldPos = DataManager.player.parent.convertToWorldSpaceAR(DataManager.player.position);
         this.touchPos = DataManager.player.parent.convertToNodeSpaceAR(event.getLocation());
         this.deltaX = event.getLocationX() - playerWorldPos.x;
         this.deltaY = event.getLocationY() - playerWorldPos.y;
         this.distance = Math.sqrt(Math.pow(this.deltaX, 2) + Math.pow(this.deltaY, 2));
         this.time = this.distance / this.SPEED;
+    }
+
+    private move(dt: number, deltaX, deltaY): void {
+        let absX = Math.abs(deltaX);
+        let absY = Math.abs(deltaY);
+        let totalFrame = this.time / dt;
+        let frameX = this.deltaX / totalFrame;
+        let frameY = this.deltaY / totalFrame;
+        DataManager.player.x += frameX;
+        DataManager.player.y += frameY;
+        if (absX <= 10 && absY <= 10) {
+            this.isMove = false;
+            DataManager.player.x = this.touchPos.x;
+            DataManager.player.y = this.touchPos.y;
+        }
+    }
+
+    private rotate(deltaX, deltaY): void {
+        let radian = Math.atan2(deltaY, deltaX);
+        let degree = cc.misc.radiansToDegrees(radian);
+        degree += 90;
+        DataManager.player.angle = degree;
     }
 }

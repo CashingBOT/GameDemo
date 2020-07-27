@@ -1,8 +1,7 @@
+import DataManager from "./DataManager";
 import EventManager from "./EventManager";
 import TouchSystem from "../systems/TouchSystem";
-import RotateSystem from "../systems/RotateSystem";
 import FireSystem from "../systems/FireSystem";
-import DataManager from "./DataManager";
 
 const { ccclass, property } = cc._decorator;
 
@@ -29,25 +28,28 @@ export default class MainController extends cc.Component {
     private initData(): void {
         DataManager.touchLayer = this.touchLayer;
         DataManager.player = this.player;
+        DataManager.moveLock = false;
+        DataManager.fireLock = true;
     }
 
     private addComp(): void {
         DataManager.touchLayer.addComponent(TouchSystem).enabled = true;
-
-        // DataManager.player.addComponent(RotateSystem).enabled = true;
-
         DataManager.player.addComponent(FireSystem).enabled = false;
     }
 
+    /******************** Events ********************/
+
     @EventManager.systemEventOn(EventManager.MOVE_ON)
     public touchOn(): void {
-        DataManager.touchLayer.getComponent(TouchSystem).enabled = true;
         DataManager.player.getComponent(FireSystem).enabled = false;
+        DataManager.moveLock = false;
+        DataManager.fireLock = true;
     }
 
     @EventManager.systemEventOn(EventManager.MOVE_OFF)
     public fireOn(): void {
-        DataManager.touchLayer.getComponent(TouchSystem).enabled = false;
         DataManager.player.getComponent(FireSystem).enabled = true;
+        DataManager.moveLock = true;
+        DataManager.fireLock = false;
     }
 }

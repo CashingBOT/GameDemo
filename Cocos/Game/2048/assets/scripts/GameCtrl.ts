@@ -45,11 +45,11 @@ export default class GameCtrl extends cc.Component {
     }
 
     private _initNode() {
-        this._score = this.node.parent.getChildByName('score').getChildByName('num').getComponent(cc.Label);
+        this._score = this.node.parent.getChildByName("score").getChildByName("num").getComponent(cc.Label);
 
-        this._hstScore = this.node.parent.getChildByName('highestScore').getChildByName('num').getComponent(cc.Label);
+        this._hstScore = this.node.parent.getChildByName("highestScore").getChildByName("num").getComponent(cc.Label);
 
-        this._hstScore.string = cc.sys.localStorage.getItem('score') || '0';
+        this._hstScore.string = cc.sys.localStorage.getItem("score") || "0";
     }
 
     private _initBoard() {
@@ -71,16 +71,17 @@ export default class GameCtrl extends cc.Component {
     }
 
     private _setTouchEvent() {
-        this.board.on('touchstart', (t: cc.Touch) => {
+        this.board.on("touchstart", (t: cc.Touch) => {
             // console.log(this._itemNumList);
             // console.log(this._itemNodeList);
             this._startPos = t.getLocation();
         });
 
-        this.board.on('touchend', (t: cc.Touch) => {
+        this.board.on("touchend", (t: cc.Touch) => {
             this._setAlgo(t);
 
-            if (cc.sys.platform === cc.sys.WECHAT_GAME) { // Judge wether WeChat environment or not
+            if (cc.sys.platform === cc.sys.WECHAT_GAME) {
+                // Judge wether WeChat environment or not
                 wx.vibrateShort(); // Add vibration
             }
 
@@ -92,26 +93,37 @@ export default class GameCtrl extends cc.Component {
      * Core algorithm
      */
     private _setAlgo(t) {
-        if (Math.abs(this._startPos.x - t.getLocation().x) > Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.x - t.getLocation().x > 0) { // Left
+        if (
+            Math.abs(this._startPos.x - t.getLocation().x) > Math.abs(this._startPos.y - t.getLocation().y) &&
+            this._startPos.x - t.getLocation().x > 0
+        ) {
+            // Left
             // console.log('left');
 
             for (let y = 0; y < 4; y++) {
                 for (let x = 0; x < 4; x++) {
                     for (let i = x; i > 0; i--) {
-                        if (this._itemNumList[y][i - 1] == this._itemNumList[y][i] && this._itemNumList[y][i] != 0 && !this._itemLockList[y][i] && !this._itemLockList[y][i - 1]) {
+                        if (
+                            this._itemNumList[y][i - 1] == this._itemNumList[y][i] &&
+                            this._itemNumList[y][i] != 0 &&
+                            !this._itemLockList[y][i] &&
+                            !this._itemLockList[y][i - 1]
+                        ) {
                             this._itemNumList[y][i - 1] += this._itemNumList[y][i];
                             this._itemLockList[y][i - 1] = true;
                             this._itemNumList[y][i] = 0;
 
                             this._setDestroy(this._itemNodeList[y][i], this._itemNodeList[y][i - 1].position);
 
-                            this._itemNodeList[y][i - 1].getChildByName('num').getComponent(cc.Label).string = this._itemNumList[y][i - 1];
+                            this._itemNodeList[y][i - 1]
+                                .getChildByName("num")
+                                .getComponent(cc.Label).string = this._itemNumList[y][i - 1];
                             this._itemNodeList[y][i] = 0;
 
                             this._isSpawn = true;
 
                             this._setColor(this._itemNumList[y][i - 1], this._itemNodeList[y][i - 1]);
-                            this._setEffect(this._itemNodeList[y][i - 1], '_');
+                            this._setEffect(this._itemNodeList[y][i - 1], "_");
                             this._setScore(this._itemNumList[y][i - 1]);
 
                             // console.log('combine');
@@ -141,26 +153,37 @@ export default class GameCtrl extends cc.Component {
             }
         }
 
-        if (Math.abs(this._startPos.x - t.getLocation().x) > Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.x - t.getLocation().x < 0) { // Right
+        if (
+            Math.abs(this._startPos.x - t.getLocation().x) > Math.abs(this._startPos.y - t.getLocation().y) &&
+            this._startPos.x - t.getLocation().x < 0
+        ) {
+            // Right
             // console.log('right');
 
             for (let y = 0; y < 4; y++) {
                 for (let x = 3; x > -1; x--) {
                     for (let i = x; i < 3; i++) {
-                        if (this._itemNumList[y][i + 1] == this._itemNumList[y][i] && this._itemNumList[y][i] != 0 && !this._itemLockList[y][i] && !this._itemLockList[y][i + 1]) {
+                        if (
+                            this._itemNumList[y][i + 1] == this._itemNumList[y][i] &&
+                            this._itemNumList[y][i] != 0 &&
+                            !this._itemLockList[y][i] &&
+                            !this._itemLockList[y][i + 1]
+                        ) {
                             this._itemNumList[y][i + 1] += this._itemNumList[y][i];
                             this._itemLockList[y][i + 1] = true;
                             this._itemNumList[y][i] = 0;
 
                             this._setDestroy(this._itemNodeList[y][i], this._itemNodeList[y][i + 1].position);
 
-                            this._itemNodeList[y][i + 1].getChildByName('num').getComponent(cc.Label).string = this._itemNumList[y][i + 1];
+                            this._itemNodeList[y][i + 1]
+                                .getChildByName("num")
+                                .getComponent(cc.Label).string = this._itemNumList[y][i + 1];
                             this._itemNodeList[y][i] = 0;
 
                             this._isSpawn = true;
 
                             this._setColor(this._itemNumList[y][i + 1], this._itemNodeList[y][i + 1]);
-                            this._setEffect(this._itemNodeList[y][i + 1], '_');
+                            this._setEffect(this._itemNodeList[y][i + 1], "_");
                             this._setScore(this._itemNumList[y][i + 1]);
 
                             // console.log('combine');
@@ -191,25 +214,36 @@ export default class GameCtrl extends cc.Component {
             }
         }
 
-        if (Math.abs(this._startPos.x - t.getLocation().x) < Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.y - t.getLocation().y > 0) { // Below
+        if (
+            Math.abs(this._startPos.x - t.getLocation().x) < Math.abs(this._startPos.y - t.getLocation().y) &&
+            this._startPos.y - t.getLocation().y > 0
+        ) {
+            // Below
             // console.log('below');
 
             for (let x = 0; x < 4; x++) {
                 for (let y = 0; y < 4; y++) {
                     for (let i = y; i > 0; i--) {
-                        if (this._itemNumList[i - 1][x] == this._itemNumList[i][x] && this._itemNumList[i][x] != 0 && !this._itemLockList[i][x] && !this._itemLockList[i - 1][x]) {
+                        if (
+                            this._itemNumList[i - 1][x] == this._itemNumList[i][x] &&
+                            this._itemNumList[i][x] != 0 &&
+                            !this._itemLockList[i][x] &&
+                            !this._itemLockList[i - 1][x]
+                        ) {
                             this._itemNumList[i - 1][x] += this._itemNumList[i][x];
                             this._itemLockList[i - 1][x] = true;
                             this._itemNumList[i][x] = 0;
 
                             this._setDestroy(this._itemNodeList[i][x], this._itemNodeList[i - 1][x].position);
 
-                            this._itemNodeList[i - 1][x].getChildByName('num').getComponent(cc.Label).string = this._itemNumList[i - 1][x];
+                            this._itemNodeList[i - 1][x]
+                                .getChildByName("num")
+                                .getComponent(cc.Label).string = this._itemNumList[i - 1][x];
                             this._itemNodeList[i][x] = 0;
 
                             this._isSpawn = true;
 
-                            this._setEffect(this._itemNodeList[i - 1][x], '_');
+                            this._setEffect(this._itemNodeList[i - 1][x], "_");
                             this._setColor(this._itemNumList[i - 1][x], this._itemNodeList[i - 1][x]);
                             this._setScore(this._itemNumList[i - 1][x]);
 
@@ -241,26 +275,37 @@ export default class GameCtrl extends cc.Component {
             }
         }
 
-        if (Math.abs(this._startPos.x - t.getLocation().x) < Math.abs(this._startPos.y - t.getLocation().y) && this._startPos.y - t.getLocation().y < 0) { // Up
+        if (
+            Math.abs(this._startPos.x - t.getLocation().x) < Math.abs(this._startPos.y - t.getLocation().y) &&
+            this._startPos.y - t.getLocation().y < 0
+        ) {
+            // Up
             // console.log('up');
 
             for (let x = 0; x < 4; x++) {
                 for (let y = 3; y > -1; y--) {
                     for (let i = y; i < 3; i++) {
-                        if (this._itemNumList[i + 1][x] == this._itemNumList[i][x] && this._itemNumList[i][x] != 0 && !this._itemLockList[i][x] && !this._itemLockList[i + 1][x]) {
+                        if (
+                            this._itemNumList[i + 1][x] == this._itemNumList[i][x] &&
+                            this._itemNumList[i][x] != 0 &&
+                            !this._itemLockList[i][x] &&
+                            !this._itemLockList[i + 1][x]
+                        ) {
                             this._itemNumList[i + 1][x] += this._itemNumList[i][x];
                             this._itemLockList[i + 1][x] = true;
                             this._itemNumList[i][x] = 0;
 
                             this._setDestroy(this._itemNodeList[i][x], this._itemNodeList[i + 1][x].position);
 
-                            this._itemNodeList[i + 1][x].getChildByName('num').getComponent(cc.Label).string = this._itemNumList[i + 1][x];
+                            this._itemNodeList[i + 1][x]
+                                .getChildByName("num")
+                                .getComponent(cc.Label).string = this._itemNumList[i + 1][x];
                             this._itemNodeList[i][x] = 0;
 
                             this._isSpawn = true;
 
                             this._setColor(this._itemNumList[i + 1][x], this._itemNodeList[i + 1][x]);
-                            this._setEffect(this._itemNodeList[i + 1][x], '_');
+                            this._setEffect(this._itemNodeList[i + 1][x], "_");
                             this._setScore(this._itemNumList[i + 1][x]);
 
                             // console.log('combine');
@@ -320,7 +365,7 @@ export default class GameCtrl extends cc.Component {
             this.board.addChild(newItem);
             newItem.x = vecList[0] * (165 + 8) + 8;
             newItem.y = vecList[1] * (165 + 8) + 8;
-            newItem.getChildByName('num').getComponent(cc.Label).string = this._itemNumList[vecList[1]][vecList[0]];
+            newItem.getChildByName("num").getComponent(cc.Label).string = this._itemNumList[vecList[1]][vecList[0]];
             this._itemNodeList[vecList[1]][vecList[0]] = newItem;
 
             this._setColor(this._itemNumList[vecList[1]][vecList[0]], this._itemNodeList[vecList[1]][vecList[0]]);
@@ -336,31 +381,31 @@ export default class GameCtrl extends cc.Component {
     private _setColor(num: number, node: cc.Node) {
         switch (num) {
             case 4:
-                node.color = cc.color().fromHEX('#F8E167');
+                node.color = cc.color().fromHEX("#F8E167");
                 break;
             case 8:
-                node.color = cc.color().fromHEX('#EED056');
+                node.color = cc.color().fromHEX("#EED056");
                 break;
             case 16:
-                node.color = cc.color().fromHEX('#EBA81B');
+                node.color = cc.color().fromHEX("#EBA81B");
                 break;
             case 32:
-                node.color = cc.color().fromHEX('#E78D1A');
+                node.color = cc.color().fromHEX("#E78D1A");
                 break;
             case 64:
-                node.color = cc.color().fromHEX('#EE7516');
+                node.color = cc.color().fromHEX("#EE7516");
                 break;
             case 128:
-                node.color = cc.color().fromHEX('#EE4C0D');
+                node.color = cc.color().fromHEX("#EE4C0D");
                 break;
             case 256:
-                node.color = cc.color().fromHEX('#FF1F00');
+                node.color = cc.color().fromHEX("#FF1F00");
                 break;
             case 512:
-                node.color = cc.color().fromHEX('#AF0000');
+                node.color = cc.color().fromHEX("#AF0000");
                 break;
             case 1024:
-                node.color = cc.color().fromHEX('#2F36E6');
+                node.color = cc.color().fromHEX("#2F36E6");
                 break;
         }
     }
@@ -369,33 +414,30 @@ export default class GameCtrl extends cc.Component {
      * Set item spawn or combine effect
      */
     private _setEffect(item: cc.Node, str?: string) {
-
-        // if (str) {
-        //     cc.tween(item)
-        //         .to(0, { zIndex: 1000 })
-        //         .to(0.2, { scale: 1.2 })
-        //         .to(0.3, { scale: 1 }, { easing: 'bounceOut' })
-        //         .to(0, { zIndex: 0 })
-        //         .start();
-        // } else {
-        //     item.scale = 0;
-        //     cc.tween(item)
-        //         .to(0.5, { scale: 1 }, { easing: 'sineOut' })
-        //         .start();
-        // }
+        if (str) {
+            cc.tween(item)
+                .to(0, { zIndex: 1000 })
+                .to(0.2, { scale: 1.2 })
+                .to(0.3, { scale: 1 }, { easing: "bounceOut" })
+                .to(0, { zIndex: 0 })
+                .start();
+        } else {
+            item.scale = 0;
+            cc.tween(item).to(0.5, { scale: 1 }, { easing: "sineOut" }).start();
+        }
     }
 
     private _setPos(node: cc.Node, pos: cc.Vec2) {
-        cc.tween(node)
-            .to(0.1, { position: pos })
-            .start();
+        cc.tween(node).to(0.1, { position: pos }).start();
     }
 
     private _setDestroy(node: cc.Node, pos: cc.Vec2) {
         cc.tween(node)
             .to(0, { zIndex: -1 })
             .to(0, { position: pos })
-            .call(() => { node.destroy(); })
+            .call(() => {
+                node.destroy();
+            })
             .start();
     }
 
@@ -407,10 +449,9 @@ export default class GameCtrl extends cc.Component {
     }
 
     public restartBtnCallback() {
-
         if (parseInt(this._score.string) > parseInt(this._hstScore.string)) {
             this._hstScore.string = this._score.string;
-            cc.sys.localStorage.setItem('score', this._hstScore.string);
+            cc.sys.localStorage.setItem("score", this._hstScore.string);
         }
 
         cc.game.restart();

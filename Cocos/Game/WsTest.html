@@ -1,0 +1,57 @@
+ <!DOCTYPE html>
+  <meta charset="utf-8" />
+  <title>WebSocket Test</title>
+  <script language="javascript" type="text/javascript">
+
+  var wsUri = "ws://echo.websocket.org/";
+  var output;
+
+  function init() {
+    output = document.getElementById("output");
+    testWebSocket();
+  }
+
+  function testWebSocket() { // 初始化websocket，绑定回调
+    websocket = new WebSocket(wsUri);
+    websocket.onopen = onOpen;
+    websocket.onclose = onClose;
+    websocket.onmessage = onMessage;
+    websocket.onerror = onError;
+  }
+
+  function onOpen(evt) { // 连接成功回调
+    writeToScreen("CONNECTED");
+    doSend("WebSocket rocks");
+  }
+
+  function onClose(evt) { // 连接关闭回调
+    writeToScreen("DISCONNECTED");
+  }
+
+  function onMessage(evt) { // 收到消息回调
+    writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
+    websocket.close();
+  }
+
+  function onError(evt) { // 错误回调
+    writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+  }
+
+  function doSend(message) { // 向服务器发送消息
+    writeToScreen("SENT: " + message);
+    websocket.send(message);
+  }
+
+  function writeToScreen(message) { // 将文字打印到网页上
+    var pre = document.createElement("p");
+    pre.style.wordWrap = "break-word";
+    pre.innerHTML = message;
+    output.appendChild(pre);
+  }
+
+  // 网页加载完成时调用init方法，初始化websocket
+  window.addEventListener("load", init, false);
+  </script>
+  
+  <h2>WebSocket Test</h2>
+  <div id="output"></div>

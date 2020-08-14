@@ -82,10 +82,8 @@ export default class FireSystem extends cc.Component {
         }
         let time = distance / this.SPEED;
         let radian = cc.misc.degreesToRadians(DataManager.player.angle);
-        let deltaX = Math.sin(radian) * distance;
+        let deltaX = -Math.sin(radian) * distance;
         let deltaY = Math.cos(radian) * distance;
-        console.log("X     " + deltaX);
-        console.log("Y     " + deltaY);
         cc.tween(this.node)
             .by(time, { position: cc.v2(deltaX, deltaY) })
             .start();

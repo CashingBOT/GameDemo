@@ -1,0 +1,104 @@
+
+js.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+shaoguang0003
+  rotate: false
+  xy: 2, 207
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0005
+  rotate: false
+  xy: 87, 207
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0007
+  rotate: false
+  xy: 2, 172
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0009
+  rotate: false
+  xy: 87, 172
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0011
+  rotate: true
+  xy: 172, 157
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0013
+  rotate: true
+  xy: 207, 157
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0015
+  rotate: false
+  xy: 2, 137
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0017
+  rotate: false
+  xy: 87, 137
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0019
+  rotate: false
+  xy: 2, 102
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0021
+  rotate: false
+  xy: 87, 102
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0023
+  rotate: true
+  xy: 172, 72
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0025
+  rotate: true
+  xy: 207, 72
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0027
+  rotate: false
+  xy: 2, 67
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1
+shaoguang0029
+  rotate: false
+  xy: 87, 67
+  size: 83, 33
+  orig: 85, 35
+  offset: 0, 1
+  index: -1

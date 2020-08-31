@@ -1,0 +1,1387 @@
+{
+	"viewList": [
+		{
+			"name": "BindSuccessView",
+			"path": "Prefab/view/BindSuccessView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "BindingGiftView",
+			"path": "Prefab/view/BindingGiftView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "CatchGold_CatchGoldView",
+			"path": "Prefab/view/CatchGold/CatchGoldView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "CatchGold_ChooseToolView",
+			"path": "Prefab/view/CatchGold/ChooseToolView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "DailyTaskView",
+			"path": "Prefab/view/DailyTaskView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "IncomeHintView",
+			"path": "Prefab/view/IncomeHintView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "InvitationListView",
+			"path": "Prefab/view/InvitationListView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "InvitationView",
+			"path": "Prefab/view/InvitationView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "LoginView",
+			"path": "Prefab/view/LoginView",
+			"isLoad": true,
+			"deps": []
+		},
+		{
+			"name": "MainView",
+			"path": "Prefab/view/MainView",
+			"isLoad": true,
+			"deps": []
+		},
+		{
+			"name": "PrivacyView",
+			"path": "Prefab/view/PrivacyView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "PromptView",
+			"path": "Prefab/view/PromptView",
+			"isLoad": true,
+			"deps": []
+		},
+		{
+			"name": "RewardView",
+			"path": "Prefab/view/RewardView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "SettingView",
+			"path": "Prefab/view/SettingView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "ShareView",
+			"path": "Prefab/view/ShareView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "SignInView",
+			"path": "Prefab/view/SignInView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "StallIncomeView",
+			"path": "Prefab/view/StallIncomeView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "SysPopupView",
+			"path": "Prefab/view/SysPopupView",
+			"isLoad": true,
+			"deps": []
+		},
+		{
+			"name": "UserProtocolView",
+			"path": "Prefab/view/UserProtocolView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "WithdrawDetailView",
+			"path": "Prefab/view/WithdrawDetailView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "WithdrawRecordView",
+			"path": "Prefab/view/WithdrawRecordView",
+			"isLoad": false,
+			"deps": []
+		},
+		{
+			"name": "WithdrawView",
+			"path": "Prefab/view/WithdrawView",
+			"isLoad": false,
+			"deps": []
+		}
+	],
+	"resList": [
+		{
+			"name": "Atlas_mainUIAtlas",
+			"path": "Atlas/mainUIAtlas",
+			"type": 2,
+			"isLoad": true
+		},
+		{
+			"name": "Config_config",
+			"path": "Config/config",
+			"type": 5,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_building",
+			"path": "Mp3/building",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_calling",
+			"path": "Mp3/calling",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_cashier",
+			"path": "Mp3/cashier",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_collectcoin",
+			"path": "Mp3/collectcoin",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_getbalance",
+			"path": "Mp3/getbalance",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_getcoin",
+			"path": "Mp3/getcoin",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_godappear",
+			"path": "Mp3/godappear",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_godleave",
+			"path": "Mp3/godleave",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_levelup",
+			"path": "Mp3/levelup",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_lobby",
+			"path": "Mp3/lobby",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_menuclose",
+			"path": "Mp3/menuclose",
+			"type": 3,
+			"isLoad": true
+		},
+		{
+			"name": "Mp3_onclick",
+			"path": "Mp3/onclick",
+			"type": 3,
+			"isLoad": true
+		},
+		{
+			"name": "Mp3_slot",
+			"path": "Mp3/slot",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_slotbonus",
+			"path": "Mp3/slotbonus",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Mp3_slotfinish",
+			"path": "Mp3/slotfinish",
+			"type": 3,
+			"isLoad": false
+		},
+		{
+			"name": "Prefab_component_GoldIcon",
+			"path": "Prefab/component/GoldIcon",
+			"type": 7,
+			"isLoad": false
+		},
+		{
+			"name": "Prefab_component_InviteInfoItem",
+			"path": "Prefab/component/InviteInfoItem",
+			"type": 7,
+			"isLoad": false
+		},
+		{
+			"name": "Prefab_component_ItemBox",
+			"path": "Prefab/component/ItemBox",
+			"type": 7,
+			"isLoad": false
+		},
+		{
+			"name": "Prefab_component_ListViewComponent",
+			"path": "Prefab/component/ListViewComponent",
+			"type": 7,
+			"isLoad": false
+		},
+		{
+			"name": "Prefab_component_MenuBtn",
+			"path": "Prefab/component/MenuBtn",
+			"type": 7,
+			"isLoad": false
+		},
+		{
+			"name": "Prefab_component_StallItem",
+			"path": "Prefab/component/StallItem",
+			"type": 7,
+			"isLoad": false
+		},
+		{
+			"name": "Prefab_component_WithdrawDetailListItem",
+			"path": "Prefab/component/WithdrawDetailListItem",
+			"type": 7,
+			"isLoad": false
+		},
+		{
+			"name": "Prefab_component_WithdrawRecordListItem",
+			"path": "Prefab/component/WithdrawRecordListItem",
+			"type": 7,
+			"isLoad": false
+		},
+		{
+			"name": "Prefab_view_CatchGold_item",
+			"path": "Prefab/view/CatchGold/item",
+			"type": 7,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_Djjl",
+			"path": "Spine/Djjl/Djjl",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_LQHB",
+			"path": "Spine/LQHB/LQHB",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_YQYL",
+			"path": "Spine/YQYL/YQYL",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_baiditan_01",
+			"path": "Spine/baiditan_01/baiditan_01",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_baiditan_02",
+			"path": "Spine/baiditan_02/baiditan_02",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_baiditan_03",
+			"path": "Spine/baiditan_03/baiditan_03",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_baiditan_04",
+			"path": "Spine/baiditan_04/baiditan_04",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_baiditan_05",
+			"path": "Spine/baiditan_05/baiditan_05",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_baiditan_06",
+			"path": "Spine/baiditan_06/baiditan_06",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_baiditan_07",
+			"path": "Spine/baiditan_07/baiditan_07",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_baiditan_08",
+			"path": "Spine/baiditan_08/baiditan_08",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_baiditan_09",
+			"path": "Spine/baiditan_09/baiditan_09",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_baiditan_10",
+			"path": "Spine/baiditan_10/baiditan_10",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_bangding",
+			"path": "Spine/bangding/bangding",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_bdyl",
+			"path": "Spine/bdyl/bdyl",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_catchGold",
+			"path": "Spine/catchGold/jiesuancaidai",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_catchGold",
+			"path": "Spine/catchGold/jiesuanjiangli",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_catchGold",
+			"path": "Spine/catchGold/skeleton",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_catchGold",
+			"path": "Spine/catchGold/zhunbei",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_dianji",
+			"path": "Spine/dianji/dianji",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_guang1",
+			"path": "Spine/guang1/guang1",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_guang2",
+			"path": "Spine/guang2/guang2",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_guangquan",
+			"path": "Spine/guangquan/guangquan",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_hongbaocaidai",
+			"path": "Spine/hongbaocaidai/hongbaocaidai",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_jiasu",
+			"path": "Spine/jiasu/jiasu",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_js",
+			"path": "Spine/js/js",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_jzjd",
+			"path": "Spine/jzjd/jzjd",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_lingqujinbi",
+			"path": "Spine/lingqujinbi/lingqujinbi",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_sjtw",
+			"path": "Spine/sjtw/sjtw",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_tuijian",
+			"path": "Spine/tuijian/tuijian",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_tztj1",
+			"path": "Spine/tztj1/tztj1",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_tztj2",
+			"path": "Spine/tztj2/tztj2",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_tztj3",
+			"path": "Spine/tztj3/tztj3",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_xs",
+			"path": "Spine/xs/xs",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_xslb",
+			"path": "Spine/xslb/xslb",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_yilinqu",
+			"path": "Spine/yilinqu/yilinqu",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_zhuangxiu",
+			"path": "Spine/zhuangxiu/zhuangxiu",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_zhuangxiu2",
+			"path": "Spine/zhuangxiu2/zhuangxiu2",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_zmtz01",
+			"path": "Spine/zmtz01/zmtz01",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_zmtz02",
+			"path": "Spine/zmtz02/zmtz02",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_zmtz03",
+			"path": "Spine/zmtz03/zmtz03",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_zztz1",
+			"path": "Spine/zztz1/zztz1",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Spine_zztz2",
+			"path": "Spine/zztz2/zztz2",
+			"type": 4,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi001",
+			"path": "Texture/CatchGold/jiejinzi001",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi002",
+			"path": "Texture/CatchGold/jiejinzi002",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi003",
+			"path": "Texture/CatchGold/jiejinzi003",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi004",
+			"path": "Texture/CatchGold/jiejinzi004",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi005",
+			"path": "Texture/CatchGold/jiejinzi005",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi006",
+			"path": "Texture/CatchGold/jiejinzi006",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi007",
+			"path": "Texture/CatchGold/jiejinzi007",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi008",
+			"path": "Texture/CatchGold/jiejinzi008",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi009",
+			"path": "Texture/CatchGold/jiejinzi009",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi010",
+			"path": "Texture/CatchGold/jiejinzi010",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi011",
+			"path": "Texture/CatchGold/jiejinzi011",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi012",
+			"path": "Texture/CatchGold/jiejinzi012",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi013",
+			"path": "Texture/CatchGold/jiejinzi013",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi014",
+			"path": "Texture/CatchGold/jiejinzi014",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi015",
+			"path": "Texture/CatchGold/jiejinzi015",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi016",
+			"path": "Texture/CatchGold/jiejinzi016",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi017",
+			"path": "Texture/CatchGold/jiejinzi017",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi018",
+			"path": "Texture/CatchGold/jiejinzi018",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi019",
+			"path": "Texture/CatchGold/jiejinzi019",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi020",
+			"path": "Texture/CatchGold/jiejinzi020",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi021_1",
+			"path": "Texture/CatchGold/jiejinzi021-1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi021_2",
+			"path": "Texture/CatchGold/jiejinzi021-2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi021",
+			"path": "Texture/CatchGold/jiejinzi021",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi022",
+			"path": "Texture/CatchGold/jiejinzi022",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi024",
+			"path": "Texture/CatchGold/jiejinzi024",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi025",
+			"path": "Texture/CatchGold/jiejinzi025",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi026",
+			"path": "Texture/CatchGold/jiejinzi026",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi027",
+			"path": "Texture/CatchGold/jiejinzi027",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi028",
+			"path": "Texture/CatchGold/jiejinzi028",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi029",
+			"path": "Texture/CatchGold/jiejinzi029",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi030",
+			"path": "Texture/CatchGold/jiejinzi030",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi031",
+			"path": "Texture/CatchGold/jiejinzi031",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi032",
+			"path": "Texture/CatchGold/jiejinzi032",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi033",
+			"path": "Texture/CatchGold/jiejinzi033",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_CatchGold_jiejinzi034",
+			"path": "Texture/CatchGold/jiejinzi034",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_common2",
+			"path": "Texture/common2",
+			"type": 1,
+			"isLoad": true
+		},
+		{
+			"name": "Texture_common4",
+			"path": "Texture/common4",
+			"type": 1,
+			"isLoad": true
+		},
+		{
+			"name": "Texture_dl_bg",
+			"path": "Texture/dl_bg",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_load",
+			"path": "Texture/load",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_1_1",
+			"path": "Texture/main/stall_1/1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_1_2",
+			"path": "Texture/main/stall_1/2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_1_3",
+			"path": "Texture/main/stall_1/3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_1_4",
+			"path": "Texture/main/stall_1/4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_1_5",
+			"path": "Texture/main/stall_1/5",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_10_1",
+			"path": "Texture/main/stall_10/1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_10_2",
+			"path": "Texture/main/stall_10/2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_10_3",
+			"path": "Texture/main/stall_10/3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_10_4",
+			"path": "Texture/main/stall_10/4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_10_5",
+			"path": "Texture/main/stall_10/5",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_2_1",
+			"path": "Texture/main/stall_2/1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_2_2",
+			"path": "Texture/main/stall_2/2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_2_3",
+			"path": "Texture/main/stall_2/3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_2_4",
+			"path": "Texture/main/stall_2/4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_2_5",
+			"path": "Texture/main/stall_2/5",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_3_1",
+			"path": "Texture/main/stall_3/1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_3_2",
+			"path": "Texture/main/stall_3/2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_3_3",
+			"path": "Texture/main/stall_3/3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_3_4",
+			"path": "Texture/main/stall_3/4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_3_5",
+			"path": "Texture/main/stall_3/5",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_4_1",
+			"path": "Texture/main/stall_4/1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_4_2",
+			"path": "Texture/main/stall_4/2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_4_3",
+			"path": "Texture/main/stall_4/3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_4_4",
+			"path": "Texture/main/stall_4/4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_4_5",
+			"path": "Texture/main/stall_4/5",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_5_1",
+			"path": "Texture/main/stall_5/1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_5_2",
+			"path": "Texture/main/stall_5/2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_5_3",
+			"path": "Texture/main/stall_5/3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_5_4",
+			"path": "Texture/main/stall_5/4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_5_5",
+			"path": "Texture/main/stall_5/5",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_6_1",
+			"path": "Texture/main/stall_6/1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_6_2",
+			"path": "Texture/main/stall_6/2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_6_3",
+			"path": "Texture/main/stall_6/3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_6_4",
+			"path": "Texture/main/stall_6/4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_6_5",
+			"path": "Texture/main/stall_6/5",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_7_1",
+			"path": "Texture/main/stall_7/1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_7_2",
+			"path": "Texture/main/stall_7/2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_7_3",
+			"path": "Texture/main/stall_7/3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_7_4",
+			"path": "Texture/main/stall_7/4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_7_5",
+			"path": "Texture/main/stall_7/5",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_8_1",
+			"path": "Texture/main/stall_8/1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_8_2",
+			"path": "Texture/main/stall_8/2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_8_3",
+			"path": "Texture/main/stall_8/3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_8_4",
+			"path": "Texture/main/stall_8/4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_8_5",
+			"path": "Texture/main/stall_8/5",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_9_1",
+			"path": "Texture/main/stall_9/1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_9_2",
+			"path": "Texture/main/stall_9/2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_9_3",
+			"path": "Texture/main/stall_9/3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_9_4",
+			"path": "Texture/main/stall_9/4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_main_stall_9_5",
+			"path": "Texture/main/stall_9/5",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_mrrw2",
+			"path": "Texture/mrrw2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_share_yafxy1",
+			"path": "Texture/share/yafxy1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_share_yafxy1_1",
+			"path": "Texture/share/yafxy1_1",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_share_yafxy2",
+			"path": "Texture/share/yafxy2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_share_yafxy3",
+			"path": "Texture/share/yafxy3",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_share_yafxy4",
+			"path": "Texture/share/yafxy4",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz19_01",
+			"path": "Texture/sz19_01",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz19_02",
+			"path": "Texture/sz19_02",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz19_03",
+			"path": "Texture/sz19_03",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz19_04",
+			"path": "Texture/sz19_04",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz19_05",
+			"path": "Texture/sz19_05",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz19_06",
+			"path": "Texture/sz19_06",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz19_07",
+			"path": "Texture/sz19_07",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz19_08",
+			"path": "Texture/sz19_08",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_01",
+			"path": "Texture/sz20_01",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_02",
+			"path": "Texture/sz20_02",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_03",
+			"path": "Texture/sz20_03",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_04",
+			"path": "Texture/sz20_04",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_05",
+			"path": "Texture/sz20_05",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_06",
+			"path": "Texture/sz20_06",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_07",
+			"path": "Texture/sz20_07",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_08",
+			"path": "Texture/sz20_08",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_09",
+			"path": "Texture/sz20_09",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_10",
+			"path": "Texture/sz20_10",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_11",
+			"path": "Texture/sz20_11",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_12",
+			"path": "Texture/sz20_12",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_13",
+			"path": "Texture/sz20_13",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_14",
+			"path": "Texture/sz20_14",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz20_15",
+			"path": "Texture/sz20_15",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_sz6",
+			"path": "Texture/sz6",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_tx11",
+			"path": "Texture/tx11",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_tx_bg",
+			"path": "Texture/tx_bg",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_xslb2",
+			"path": "Texture/xslb2",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_zjm36",
+			"path": "Texture/zjm36",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_zjm40",
+			"path": "Texture/zjm40",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_zjm_bg",
+			"path": "Texture/zjm_bg",
+			"type": 1,
+			"isLoad": false
+		},
+		{
+			"name": "Texture_zjm_bg1",
+			"path": "Texture/zjm_bg1",
+			"type": 1,
+			"isLoad": false
+		}
+	],
+	"config": {
+		"mainViewNum": {
+			"name": "主页面视图数量",
+			"comment": "组成主页面的视图数量",
+			"key": "mainViewNum",
+			"type": "number",
+			"value": "1"
+		},
+		"logNum": {
+			"name": "日志缓存数量",
+			"comment": "达到这个数值后上传",
+			"key": "logNum",
+			"type": "number",
+			"value": "20"
+		},
+		"netWarnTime": {
+			"name": "协议延迟警告时间",
+			"comment": "协议延迟多久后发出警告",
+			"key": "netWarnTime",
+			"type": "number",
+			"value": "1500"
+		},
+		"systemPopupWindow": {
+			"name": "系统弹窗",
+			"comment": "",
+			"key": "systemPopupWindow",
+			"type": "string",
+			"value": "SysPopupView"
+		},
+		"heartbeatTime": {
+			"name": "心跳间隔",
+			"comment": "",
+			"key": "heartbeatTime",
+			"type": "number",
+			"value": "20"
+		},
+		"debugType": {
+			"name": "日志类型",
+			"comment": "0:关闭日志|1:本地浏览器|2:app壳子调试环境|3:线上环境",
+			"key": "debugType",
+			"type": "enum",
+			"value": "1"
+		},
+		"debugLv": {
+			"name": "日志等级",
+			"comment": "0:输出报错日志|1:输出报错和核心库日志|2:输出报错、核心库、游戏逻辑日志",
+			"key": "debugLv",
+			"type": "enum",
+			"value": "1"
+		},
+		"isOpenManyTouch": {
+			"name": "多点触控",
+			"comment": "是否开启多点触控默认关闭",
+			"key": "isOpenManyTouch",
+			"type": "boolean",
+			"value": "false"
+		},
+		"screenStyle": {
+			"name": "屏幕方向",
+			"comment": "0:竖屏|1:横屏",
+			"key": "screenStyle",
+			"type": "enum",
+			"value": "0"
+		}
+	},
+	"localConfig": {
+		"spinePath": {
+			"comment": "特效资源导入源路径",
+			"key": "spinePath",
+			"type": "string",
+			"value": "/Users/xia/Documents/work/work_res/stall/切图标注"
+		},
+		"protobufPath": {
+			"comment": "Protobuf文件路径",
+			"key": "protobufPath",
+			"type": "string",
+			"value": "/Users/xia/Documents/work/exchange/protoBuf/stall"
+		}
+	}
+}

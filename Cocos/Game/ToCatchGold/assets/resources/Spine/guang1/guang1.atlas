@@ -1,0 +1,118 @@
+
+guang1.png
+size: 852,284
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+light/guang1/guang101
+  rotate: false
+  xy: 214, 144
+  size: 101, 138
+  orig: 111, 143
+  offset: 5, 4
+  index: -1
+light/guang1/guang103
+  rotate: false
+  xy: 309, 4
+  size: 101, 138
+  orig: 111, 143
+  offset: 5, 4
+  index: -1
+light/guang1/guang105
+  rotate: false
+  xy: 317, 144
+  size: 97, 138
+  orig: 111, 143
+  offset: 9, 3
+  index: -1
+light/guang1/guang107
+  rotate: false
+  xy: 210, 2
+  size: 97, 139
+  orig: 111, 143
+  offset: 9, 2
+  index: -1
+light/guang1/guang109
+  rotate: false
+  xy: 109, 2
+  size: 99, 139
+  orig: 111, 143
+  offset: 8, 2
+  index: -1
+light/guang1/guang111
+  rotate: false
+  xy: 109, 143
+  size: 103, 139
+  orig: 111, 143
+  offset: 5, 1
+  index: -1
+light/guang1/guang113
+  rotate: false
+  xy: 416, 145
+  size: 106, 137
+  orig: 111, 143
+  offset: 3, 2
+  index: -1
+light/guang1/guang115
+  rotate: false
+  xy: 521, 7
+  size: 107, 136
+  orig: 111, 143
+  offset: 2, 2
+  index: -1
+light/guang1/guang117
+  rotate: false
+  xy: 630, 10
+  size: 107, 135
+  orig: 111, 143
+  offset: 2, 2
+  index: -1
+light/guang1/guang119
+  rotate: false
+  xy: 524, 147
+  size: 108, 135
+  orig: 111, 143
+  offset: 1, 2
+  index: -1
+light/guang1/guang121
+  rotate: false
+  xy: 634, 148
+  size: 107, 134
+  orig: 111, 143
+  offset: 1, 2
+  index: -1
+light/guang1/guang123
+  rotate: false
+  xy: 739, 14
+  size: 107, 132
+  orig: 111, 143
+  offset: 1, 5
+  index: -1
+light/guang1/guang125
+  rotate: false
+  xy: 743, 148
+  size: 107, 134
+  orig: 111, 143
+  offset: 1, 5
+  index: -1
+light/guang1/guang127
+  rotate: false
+  xy: 412, 5
+  size: 107, 137
+  orig: 111, 143
+  offset: 1, 4
+  index: -1
+light/guang1/guang129
+  rotate: false
+  xy: 2, 2
+  size: 105, 139
+  orig: 111, 143
+  offset: 1, 2
+  index: -1
+light/guang1/guang130
+  rotate: false
+  xy: 2, 143
+  size: 105, 139
+  orig: 111, 143
+  offset: 1, 2
+  index: -1

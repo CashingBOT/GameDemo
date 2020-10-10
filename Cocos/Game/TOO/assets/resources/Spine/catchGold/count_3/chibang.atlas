@@ -1,0 +1,237 @@
+
+chibang.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1/1001
+  rotate: false
+  xy: 88, 98
+  size: 74, 55
+  orig: 96, 92
+  offset: 21, 16
+  index: -1
+1/1003
+  rotate: true
+  xy: 279, 237
+  size: 74, 42
+  orig: 96, 92
+  offset: 21, 27
+  index: -1
+1/1005
+  rotate: true
+  xy: 164, 79
+  size: 74, 41
+  orig: 96, 92
+  offset: 20, 27
+  index: -1
+1/1007
+  rotate: false
+  xy: 384, 150
+  size: 74, 41
+  orig: 96, 92
+  offset: 20, 25
+  index: -1
+1/1009
+  rotate: true
+  xy: 155, 4
+  size: 73, 50
+  orig: 96, 92
+  offset: 20, 23
+  index: -1
+1/1011
+  rotate: true
+  xy: 323, 241
+  size: 72, 59
+  orig: 96, 92
+  offset: 20, 21
+  index: -1
+1/1013
+  rotate: false
+  xy: 384, 251
+  size: 71, 66
+  orig: 96, 92
+  offset: 21, 19
+  index: -1
+1/1015
+  rotate: false
+  xy: 83, 23
+  size: 70, 73
+  orig: 96, 92
+  offset: 21, 16
+  index: -1
+1/1017
+  rotate: true
+  xy: 119, 155
+  size: 70, 77
+  orig: 96, 92
+  offset: 21, 14
+  index: -1
+1/1019
+  rotate: true
+  xy: 378, 319
+  size: 73, 80
+  orig: 96, 92
+  offset: 18, 12
+  index: -1
+1/1021
+  rotate: true
+  xy: 294, 315
+  size: 77, 82
+  orig: 96, 92
+  offset: 13, 10
+  index: -1
+1/1023
+  rotate: false
+  xy: 0, 20
+  size: 81, 83
+  orig: 96, 92
+  offset: 9, 8
+  index: -1
+1/1025
+  rotate: false
+  xy: 119, 227
+  size: 83, 84
+  orig: 96, 92
+  offset: 6, 6
+  index: -1
+1/1027
+  rotate: false
+  xy: 0, 105
+  size: 86, 83
+  orig: 96, 92
+  offset: 3, 4
+  index: -1
+1/1029
+  rotate: false
+  xy: 204, 228
+  size: 73, 83
+  orig: 96, 92
+  offset: 15, 1
+  index: -1
+2/2001
+  rotate: true
+  xy: 384, 193
+  size: 56, 66
+  orig: 66, 71
+  offset: 9, 0
+  index: -1
+2/2003
+  rotate: false
+  xy: 457, 201
+  size: 55, 50
+  orig: 66, 71
+  offset: 10, 20
+  index: -1
+2/2005
+  rotate: true
+  xy: 460, 331
+  size: 61, 52
+  orig: 66, 71
+  offset: 4, 18
+  index: -1
+2/2007
+  rotate: true
+  xy: 460, 137
+  size: 62, 51
+  orig: 66, 71
+  offset: 3, 17
+  index: -1
+2/2009
+  rotate: false
+  xy: 338, 27
+  size: 63, 56
+  orig: 66, 71
+  offset: 2, 15
+  index: -1
+2/2011
+  rotate: false
+  xy: 404, 79
+  size: 63, 56
+  orig: 66, 71
+  offset: 2, 14
+  index: -1
+2/2013
+  rotate: true
+  xy: 457, 253
+  size: 64, 55
+  orig: 66, 71
+  offset: 1, 13
+  index: -1
+2/2015
+  rotate: true
+  xy: 265, 162
+  size: 64, 56
+  orig: 66, 71
+  offset: 1, 11
+  index: -1
+2/2017
+  rotate: true
+  xy: 323, 175
+  size: 64, 59
+  orig: 66, 71
+  offset: 1, 10
+  index: -1
+2/2019
+  rotate: true
+  xy: 207, 92
+  size: 65, 62
+  orig: 66, 71
+  offset: 0, 8
+  index: -1
+2/2021
+  rotate: false
+  xy: 338, 85
+  size: 64, 63
+  orig: 66, 71
+  offset: 0, 7
+  index: -1
+2/2023
+  rotate: true
+  xy: 207, 25
+  size: 65, 62
+  orig: 66, 71
+  offset: 0, 6
+  index: -1
+2/2025
+  rotate: false
+  xy: 271, 95
+  size: 65, 65
+  orig: 66, 71
+  offset: 0, 4
+  index: -1
+2/2027
+  rotate: false
+  xy: 271, 28
+  size: 65, 65
+  orig: 66, 71
+  offset: 0, 3
+  index: -1
+2/2029
+  rotate: false
+  xy: 198, 159
+  size: 65, 66
+  orig: 66, 71
+  offset: 0, 1
+  index: -1
+chibang_L
+  rotate: false
+  xy: 0, 190
+  size: 117, 121
+  orig: 117, 121
+  offset: 0, 0
+  index: -1
+jiesuanjiangli
+  rotate: false
+  xy: 0, 313
+  size: 292, 79
+  orig: 294, 81
+  offset: 1, 1
+  index: -1
+yinying
+  rotate: false
+  xy: 0, 394
+  size: 512, 118
+  orig: 518, 129
+  offset: 3, 3
+  index: -1

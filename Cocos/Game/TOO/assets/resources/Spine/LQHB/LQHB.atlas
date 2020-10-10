@@ -1,0 +1,132 @@
+
+LQHB.png
+size: 833,833
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+aixin
+  rotate: false
+  xy: 2, 535
+  size: 316, 296
+  orig: 320, 299
+  offset: 2, 3
+  index: -1
+kai/kai0006
+  rotate: false
+  xy: 320, 543
+  size: 99, 90
+  orig: 223, 201
+  offset: 70, 61
+  index: -1
+kai/kai0008
+  rotate: true
+  xy: 722, 59
+  size: 121, 106
+  orig: 223, 201
+  offset: 56, 56
+  index: -1
+kai/kai0010
+  rotate: false
+  xy: 581, 59
+  size: 139, 121
+  orig: 223, 201
+  offset: 44, 49
+  index: -1
+kai/kai0012
+  rotate: false
+  xy: 201, 2
+  size: 155, 135
+  orig: 223, 201
+  offset: 34, 42
+  index: -1
+kai/kai0014
+  rotate: true
+  xy: 613, 344
+  size: 167, 148
+  orig: 223, 201
+  offset: 26, 36
+  index: -1
+kai/kai0016
+  rotate: false
+  xy: 608, 182
+  size: 180, 160
+  orig: 223, 201
+  offset: 18, 30
+  index: -1
+kai/kai0018
+  rotate: false
+  xy: 389, 21
+  size: 190, 171
+  orig: 223, 201
+  offset: 12, 24
+  index: -1
+kai/kai0020
+  rotate: true
+  xy: 212, 334
+  size: 199, 179
+  orig: 223, 201
+  offset: 6, 19
+  index: -1
+kai/kai0022
+  rotate: true
+  xy: 201, 139
+  size: 193, 186
+  orig: 223, 201
+  offset: 15, 14
+  index: -1
+kai/kai0024
+  rotate: false
+  xy: 2, 141
+  size: 197, 191
+  orig: 223, 201
+  offset: 12, 10
+  index: -1
+kai/kai0026
+  rotate: false
+  xy: 320, 635
+  size: 203, 196
+  orig: 223, 201
+  offset: 8, 5
+  index: -1
+kai/kai0028
+  rotate: false
+  xy: 2, 334
+  size: 208, 199
+  orig: 223, 201
+  offset: 6, 1
+  index: -1
+kai/kai0030
+  rotate: false
+  xy: 393, 194
+  size: 213, 157
+  orig: 223, 201
+  offset: 4, 34
+  index: -1
+kai/kai0032
+  rotate: false
+  xy: 393, 353
+  size: 218, 158
+  orig: 223, 201
+  offset: 2, 30
+  index: -1
+kai/kai0034
+  rotate: false
+  xy: 525, 672
+  size: 221, 159
+  orig: 223, 201
+  offset: 1, 26
+  index: -1
+kai/kai0036
+  rotate: false
+  xy: 525, 513
+  size: 223, 157
+  orig: 223, 201
+  offset: 0, 21
+  index: -1
+kai/kai0038
+  rotate: false
+  xy: 2, 40
+  size: 197, 99
+  orig: 223, 201
+  offset: 0, 52
+  index: -1

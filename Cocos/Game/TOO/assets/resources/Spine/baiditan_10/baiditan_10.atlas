@@ -1,0 +1,202 @@
+
+baiditan_10.png
+size: 963,963
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+130000
+  rotate: true
+  xy: 214, 0
+  size: 137, 221
+  orig: 1024, 1024
+  offset: 452, 419
+  index: -1
+130005
+  rotate: true
+  xy: 0, 12
+  size: 123, 212
+  orig: 1024, 1024
+  offset: 456, 430
+  index: -1
+130010
+  rotate: true
+  xy: 754, 580
+  size: 109, 209
+  orig: 1024, 1024
+  offset: 460, 435
+  index: -1
+130015
+  rotate: true
+  xy: 754, 468
+  size: 110, 206
+  orig: 1024, 1024
+  offset: 463, 437
+  index: -1
+130020
+  rotate: false
+  xy: 724, 247
+  size: 118, 214
+  orig: 1024, 1024
+  offset: 461, 427
+  index: -1
+130025
+  rotate: false
+  xy: 844, 254
+  size: 107, 212
+  orig: 1024, 1024
+  offset: 462, 431
+  index: -1
+130030
+  rotate: false
+  xy: 788, 37
+  size: 111, 208
+  orig: 1024, 1024
+  offset: 459, 436
+  index: -1
+130035
+  rotate: true
+  xy: 729, 691
+  size: 125, 206
+  orig: 1024, 1024
+  offset: 455, 436
+  index: -1
+130040
+  rotate: false
+  xy: 649, 24
+  size: 137, 221
+  orig: 1024, 1024
+  offset: 452, 419
+  index: -1
+240050
+  rotate: true
+  xy: 461, 818
+  size: 145, 211
+  orig: 1024, 1024
+  offset: 442, 436
+  index: -1
+240055
+  rotate: true
+  xy: 517, 672
+  size: 144, 210
+  orig: 1024, 1024
+  offset: 450, 436
+  index: -1
+240060
+  rotate: true
+  xy: 514, 247
+  size: 147, 208
+  orig: 1024, 1024
+  offset: 451, 436
+  index: -1
+240065
+  rotate: false
+  xy: 307, 345
+  size: 150, 205
+  orig: 1024, 1024
+  offset: 450, 436
+  index: -1
+240070
+  rotate: false
+  xy: 154, 139
+  size: 151, 204
+  orig: 1024, 1024
+  offset: 449, 436
+  index: -1
+240075
+  rotate: false
+  xy: 154, 345
+  size: 151, 205
+  orig: 1024, 1024
+  offset: 449, 435
+  index: -1
+240080
+  rotate: false
+  xy: 0, 549
+  size: 152, 205
+  orig: 1024, 1024
+  offset: 448, 435
+  index: -1
+240085
+  rotate: false
+  xy: 153, 758
+  size: 152, 205
+  orig: 1024, 1024
+  offset: 448, 436
+  index: -1
+240090
+  rotate: true
+  xy: 308, 609
+  size: 148, 207
+  orig: 1024, 1024
+  offset: 449, 436
+  index: -1
+240095
+  rotate: true
+  xy: 674, 818
+  size: 145, 208
+  orig: 1024, 1024
+  offset: 445, 436
+  index: -1
+240100
+  rotate: false
+  xy: 606, 463
+  size: 146, 207
+  orig: 1024, 1024
+  offset: 437, 436
+  index: -1
+240105
+  rotate: true
+  xy: 307, 193
+  size: 150, 205
+  orig: 1024, 1024
+  offset: 433, 436
+  index: -1
+240110
+  rotate: false
+  xy: 0, 343
+  size: 152, 204
+  orig: 1024, 1024
+  offset: 431, 436
+  index: -1
+240115
+  rotate: false
+  xy: 0, 137
+  size: 152, 204
+  orig: 1024, 1024
+  offset: 431, 436
+  index: -1
+240120
+  rotate: false
+  xy: 154, 552
+  size: 152, 204
+  orig: 1024, 1024
+  offset: 431, 436
+  index: -1
+240125
+  rotate: false
+  xy: 307, 759
+  size: 152, 204
+  orig: 1024, 1024
+  offset: 431, 436
+  index: -1
+240130
+  rotate: false
+  xy: 0, 756
+  size: 151, 207
+  orig: 1024, 1024
+  offset: 432, 436
+  index: -1
+240135
+  rotate: true
+  xy: 437, 45
+  size: 146, 210
+  orig: 1024, 1024
+  offset: 436, 436
+  index: -1
+240140
+  rotate: false
+  xy: 459, 396
+  size: 145, 211
+  orig: 1024, 1024
+  offset: 442, 436
+  index: -1

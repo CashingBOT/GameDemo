@@ -1,0 +1,90 @@
+
+zmtz01.png
+size: 502,502
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+anjian
+  rotate: false
+  xy: 2, 311
+  size: 301, 189
+  orig: 303, 191
+  offset: 1, 1
+  index: -1
+anjianlight/anjianlight01
+  rotate: false
+  xy: 2, 214
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1
+anjianlight/anjianlight03
+  rotate: false
+  xy: 305, 405
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1
+anjianlight/anjianlight05
+  rotate: false
+  xy: 2, 117
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1
+anjianlight/anjianlight07
+  rotate: true
+  xy: 155, 158
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1
+anjianlight/anjianlight09
+  rotate: false
+  xy: 2, 20
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1
+anjianlight/anjianlight11
+  rotate: false
+  xy: 305, 308
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1
+anjianlight/anjianlight13
+  rotate: true
+  xy: 155, 5
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1
+anjianlight/anjianlight15
+  rotate: false
+  xy: 252, 211
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1
+anjianlight/anjianlight17
+  rotate: false
+  xy: 252, 114
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1
+anjianlight/anjianlight19
+  rotate: false
+  xy: 252, 17
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1
+anjianlight/anjianlight21
+  rotate: true
+  xy: 405, 155
+  size: 151, 95
+  orig: 152, 96
+  offset: 0, 1
+  index: -1

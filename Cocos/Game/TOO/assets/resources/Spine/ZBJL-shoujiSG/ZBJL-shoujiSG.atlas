@@ -1,0 +1,111 @@
+
+ZBJL-shoujiSG.png
+size: 350,350
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+SG/SG0002
+  rotate: false
+  xy: 2, 260
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0004
+  rotate: true
+  xy: 2, 176
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0006
+  rotate: true
+  xy: 86, 266
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0008
+  rotate: false
+  xy: 92, 176
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0010
+  rotate: true
+  xy: 2, 92
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0012
+  rotate: true
+  xy: 92, 92
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0014
+  rotate: true
+  xy: 176, 266
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0016
+  rotate: true
+  xy: 176, 182
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0018
+  rotate: false
+  xy: 182, 92
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0020
+  rotate: false
+  xy: 266, 260
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0022
+  rotate: false
+  xy: 266, 170
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0024
+  rotate: false
+  xy: 266, 80
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0026
+  rotate: true
+  xy: 2, 8
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0028
+  rotate: true
+  xy: 92, 8
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1
+SG/SG0030
+  rotate: true
+  xy: 92, 8
+  size: 82, 88
+  orig: 82, 89
+  offset: 0, 1
+  index: -1

@@ -1,0 +1,111 @@
+
+guangquan.png
+size: 534,534
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+guangquan/guangquan02
+  rotate: false
+  xy: 272, 285
+  size: 131, 121
+  orig: 137, 127
+  offset: 4, 1
+  index: -1
+guangquan/guangquan04
+  rotate: false
+  xy: 135, 164
+  size: 131, 121
+  orig: 137, 127
+  offset: 4, 1
+  index: -1
+guangquan/guangquan06
+  rotate: false
+  xy: 135, 41
+  size: 130, 121
+  orig: 137, 127
+  offset: 4, 1
+  index: -1
+guangquan/guangquan08
+  rotate: false
+  xy: 2, 284
+  size: 131, 122
+  orig: 137, 127
+  offset: 3, 0
+  index: -1
+guangquan/guangquan10
+  rotate: false
+  xy: 2, 161
+  size: 131, 121
+  orig: 137, 127
+  offset: 3, 1
+  index: -1
+guangquan/guangquan12
+  rotate: false
+  xy: 2, 38
+  size: 130, 121
+  orig: 137, 127
+  offset: 4, 1
+  index: -1
+guangquan/guangquan14
+  rotate: true
+  xy: 405, 267
+  size: 131, 121
+  orig: 137, 127
+  offset: 3, 1
+  index: -1
+guangquan/guangquan16
+  rotate: false
+  xy: 400, 144
+  size: 130, 121
+  orig: 137, 127
+  offset: 4, 1
+  index: -1
+guangquan/guangquan18
+  rotate: false
+  xy: 267, 39
+  size: 130, 121
+  orig: 137, 127
+  offset: 4, 1
+  index: -1
+guangquan/guangquan20
+  rotate: false
+  xy: 138, 411
+  size: 134, 121
+  orig: 137, 127
+  offset: 0, 1
+  index: -1
+guangquan/guangquan22
+  rotate: false
+  xy: 138, 287
+  size: 132, 122
+  orig: 137, 127
+  offset: 2, 1
+  index: -1
+guangquan/guangquan24
+  rotate: true
+  xy: 409, 400
+  size: 132, 123
+  orig: 137, 127
+  offset: 2, 1
+  index: -1
+guangquan/guangquan26
+  rotate: false
+  xy: 274, 408
+  size: 133, 124
+  orig: 137, 127
+  offset: 1, 1
+  index: -1
+guangquan/guangquan28
+  rotate: false
+  xy: 2, 408
+  size: 134, 124
+  orig: 137, 127
+  offset: 0, 1
+  index: -1
+guangquan/guangquan30
+  rotate: false
+  xy: 268, 162
+  size: 130, 121
+  orig: 137, 127
+  offset: 4, 1
+  index: -1

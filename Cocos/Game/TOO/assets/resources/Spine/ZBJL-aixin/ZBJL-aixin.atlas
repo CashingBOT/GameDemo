@@ -1,0 +1,20 @@
+
+ZBJL-aixin.png
+size: 579,579
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+aixin
+  rotate: false
+  xy: 2, 281
+  size: 316, 296
+  orig: 320, 299
+  offset: 2, 3
+  index: -1
+aixin1
+  rotate: true
+  xy: 320, 283
+  size: 294, 257
+  orig: 301, 266
+  offset: 4, 9
+  index: -1
